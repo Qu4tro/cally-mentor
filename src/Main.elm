@@ -1,11 +1,11 @@
 module Main exposing (..)
 
 import Browser
-
-import Types
-import View
 import State
 import Subscriptions
+import Types
+import View
+
 
 main : Program () Types.Model Types.Msg
 main =
@@ -15,7 +15,3 @@ main =
         , update = State.update
         , subscriptions = Subscriptions.subscriptions
         }
-
-
-
-
