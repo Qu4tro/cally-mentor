@@ -1,0 +1,39 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 3px 5px 5px #00000044;
+}
+
+.year {
+  background-color: #1E1E24;
+}
+.month {
+  background-color: #4B8F8C;
+  font-family: Georgia, sans-serif;
+}
+.day {
+  background-color: #92140C;
+  font-family: Georgia, sans-serif;
+}
+
+.tint {
+  opacity: 20%;
+  background-color: #000;
+}
+
+.square {
+  padding: 0.8em 1.5em;
+  color: white;
+  font-family: Georgia;
+  font-size: 3rem;
+}
