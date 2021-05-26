@@ -1,22 +1,29 @@
 module View.Date exposing (..)
 
-import Html exposing (Html, button, div, h1, option, select, sup, text)
-import Html.Attributes exposing (class)
-import Types exposing (Model, Msg)
-
 import Domain.Date
+import Html exposing (Html, div, sup, text)
+import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
+import Types exposing (Date, Model, Msg(..))
+
+
+h2 =
+    Html.h2 [ class "font-sans font-thin text-3xl text-center mb-10" ]
+
 
 tint =
-    div [ class "opacity-20 bg-black py-4" ] []
+    div [ class "opacity-40 bg-gray-800 py-4" ] []
 
 
 square =
-    div [ class "py-8 px-14 text-5xl font-serif text-white" ]
+    div [ class "pt-6 pb-4 px-14 text-5xl font-serif text-center" ]
 
 
-oneMore =
-    button [ class "border-0 px-1 mx-2 text-white text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-red-500" ]
-        [ text "🗘" ]
+button =
+    Html.button
+        [ class "border-0 px-1 mx-2 text-center text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-green-500"
+        , onClick OneMoreDate
+        ]
 
 
 yearText : Int -> Html Msg
@@ -41,16 +48,24 @@ dayText n =
         ]
 
 
+viewDate : Date -> Html Msg
+viewDate date =
+    div [ class "flex flex-wrap justify-center" ]
+        [ div [ class "bg-gray-700 hover:bg-blue-700  todo-shadow" ]
+            [ square [ yearText date.year ], tint ]
+        , div [ class "bg-gray-700 hover:bg-blue-700  todo-shadow " ]
+            [ square [ monthText date.month ], tint ]
+        , div [ class "bg-gray-700 hover:bg-blue-700  todo-shadow" ]
+            [ square [ dayText date.day ], tint ]
+        ]
+
+
 view : Model -> Html Msg
 view model =
-    div [ class "flex" ]
-        [ div [ class "flex text-center justify-center todo-shadow" ]
-            [ div [ class "bg-gray-700 hover:bg-blue-700" ]
-                [ square [ yearText 2021 ], tint ]
-            , div [ class "bg-gray-700 hover:bg-indigo-700" ]
-                [ square [ monthText 5 ], tint ]
-            , div [ class "bg-gray-700 hover:bg-purple-700" ]
-                [ square [ dayText 25 ], tint ]
+    div []
+        [ h2 [ text "What weekday does the given date fall on?" ]
+        , div [ class "flex text-white" ]
+            [ viewDate model.date
+            , button [ text "🗘" ]
             ]
-        , oneMore
         ]

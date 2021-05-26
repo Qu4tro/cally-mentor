@@ -1,9 +1,31 @@
 module Domain.Date exposing (..)
 
+import Random
+import Types exposing (Date)
+
+
+randomDateGenerator : Random.Generator Date
+randomDateGenerator =
+    Random.map3
+        (\y m d ->
+            { year = y
+            , month = m
+            , day = d
+            }
+        )
+        (Random.int 1990 2030)
+        (Random.int 1 12)
+        (Random.int 1 31)
+
+
+isLeapYear : Int -> Bool
+isLeapYear year =
+    ((modBy year 4 == 0) && (modBy year 100 /= 0)) || (modBy year 400 == 0)
+
 
 monthName : Int -> String
-monthName n =
-    case n of
+monthName month =
+    case month of
         1 ->
             "January"
 
@@ -45,7 +67,7 @@ monthName n =
 
 
 dayWithSuffix : Int -> ( String, String )
-dayWithSuffix n =
+dayWithSuffix day =
     let
         lastDigitOf =
             modBy 10
@@ -54,7 +76,7 @@ dayWithSuffix n =
             modBy 100
 
         suffix =
-            case lastTwoDigitsOf n of
+            case lastTwoDigitsOf day of
                 11 ->
                     "th"
 
@@ -65,7 +87,7 @@ dayWithSuffix n =
                     "th"
 
                 _ ->
-                    case lastDigitOf n of
+                    case lastDigitOf day of
                         1 ->
                             "st"
 
@@ -78,4 +100,4 @@ dayWithSuffix n =
                         _ ->
                             "th"
     in
-    ( String.fromInt n, suffix )
+    ( String.fromInt day, suffix )

@@ -1,30 +1,41 @@
 module View exposing (..)
 
-import Html exposing (Html, button, div, h1, option, select, sup, text)
+import Html exposing (Html)
 import Html.Attributes exposing (class)
-import Types exposing (Model, Msg)
-import View.Answers
+import Types exposing (Model, Msg, Page(..))
 import View.Date
+import View.Footer
+import View.Header
+import View.Navbar
+import View.Options
+import View.Toolbar
 
 
-container =
-    div [ class "min-h-screen max-w-screen bg-gray-100 flex justify-center" ]
+main_ =
+    Html.main_ [ class "min-h-screen max-w-screen bg-gray-100 flex" ]
 
 
-page =
-    div [ class "flex flex-col w-3/6 items-center" ]
-
-
-header =
-    h1 [ class "text-5xl font-sans font-thin my-20" ]
+article =
+    Html.article [ class "flex flex-col w-3/6 mx-auto my-2 items-center justify-start" ]
 
 
 view : Model -> Html Msg
 view model =
-    container
-        [ page
-            [ header [ text "Train weekday calculation" ]
-            , View.Date.view model
-            , View.Answers.view model
-            ]
+    let
+        pageView =
+            case model.page of
+                HomePage ->
+                    article
+                        [ View.Header.view model
+                        , View.Date.view model
+                        , View.Options.view model
+                        , View.Footer.view model
+                        ]
+
+                _ ->
+                    article [ View.Header.view model ]
+    in
+    main_
+        [ View.Navbar.view model
+        , pageView
         ]
