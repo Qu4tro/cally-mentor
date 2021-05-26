@@ -7,32 +7,36 @@ import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (Date, Model, Month, Msg(..))
+import View.Common exposing (plain, simpleWithClass, withClass)
 
 
 h2 =
-    Html.h2 [ class "font-sans font-thin text-3xl text-center mb-10" ]
+    Html.h2
+        |> simpleWithClass "font-sans font-thin text-3xl text-center mb-10"
 
 
 ol =
-    Html.ol [ class "flex flex-wrap flex-row justify-center text-white" ]
+    Html.ol
+        |> simpleWithClass "flex flex-wrap flex-row justify-center text-white"
 
 
 li =
-    Html.li [ class "bg-gray-700 hover:bg-blue-700 todo-shadow" ]
+    Html.li
+        |> simpleWithClass "bg-gray-700 hover:bg-blue-700 todo-shadow"
 
 
 p =
-    Html.p [ class "pt-6 pb-4 px-14 text-lg xl:text-5xl font-serif text-center" ]
+    Html.p
+        |> simpleWithClass "pt-6 pb-4 px-14 text-lg xl:text-5xl font-serif text-center"
 
 
 tint =
     div [ class "opacity-40 bg-gray-800 py-4" ] []
 
 
-button attrs elems =
+button =
     Html.button
-        ([ class "relative border-0 px-1 mx-2 text-center text-lg lg:text-4xl text-white rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-green-500" ] ++ attrs)
-        elems
+        |> withClass "relative border-0 px-1 mx-2 text-center text-lg lg:text-4xl text-white rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-green-500"
 
 
 sup =

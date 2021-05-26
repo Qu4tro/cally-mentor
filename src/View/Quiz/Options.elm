@@ -6,14 +6,17 @@ import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..), Weekday(..))
+import View.Common exposing (plain, simpleWithClass, withClass)
 
 
 span =
-    Html.span [ class "flex flex-wrap justify-center font-thin font-serif my-10" ]
+    Html.span
+        |> simpleWithClass "flex flex-wrap justify-center font-thin font-serif my-10"
 
 
-button attrs elems =
-    Html.button ([ class "p-5 m-4 text-white text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked " ] ++ attrs) elems
+button =
+    Html.button
+        |> withClass "p-5 m-4 text-white text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked "
 
 
 view : Model -> Html Msg

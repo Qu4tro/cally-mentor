@@ -3,14 +3,19 @@ module View.Header exposing (..)
 import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Types exposing (Model, Msg)
+import View.Common exposing (plain, withClass)
 
 
 h1 =
-    Html.h1 [ class "font-sans font-thin text-5xl text-center my-14" ]
+    Html.h1
+        |> withClass "font-sans font-thin text-5xl text-center my-14"
+        |> plain
 
 
 header =
-    Html.header [ class "mb-10" ]
+    Html.header
+        |> withClass "mb-10"
+        |> plain
 
 
 view : Model -> Html Msg

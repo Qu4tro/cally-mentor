@@ -62,7 +62,7 @@ type Month
 type Page
     = HomePage
     | AboutPage
-    | GuideAlgorithmPage
+    | GuidePage
     | GameModesPage
     | SettingsPage
 

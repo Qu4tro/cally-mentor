@@ -3,14 +3,19 @@ module View.Footer exposing (..)
 import Html exposing (Html, b, text)
 import Html.Attributes exposing (class)
 import Types exposing (Model, Msg)
+import View.Common exposing (plain, withClass)
 
 
 h3 =
-    Html.h3 [ class "font-sans font-thin text-xl text-center my-2" ]
+    Html.h3
+        |> withClass "font-sans font-thin text-xl text-center my-2"
+        |> plain
 
 
 footer =
-    Html.footer [ class "w-3/6 my-4" ]
+    Html.footer
+        |> withClass "w-3/6 my-4"
+        |> plain
 
 
 view : Model -> Html Msg
