@@ -4,6 +4,7 @@ module Types exposing (..)
 type alias Model =
     { date : Date
     , page : Page
+    , answerState : AnswerState
     }
 
 
@@ -12,6 +13,30 @@ type Msg
     | OneMoreDate
     | NewDate Date
     | ChangePageTo Page
+    | PickOption Int
+    | ClearAnswerState
+
+
+type alias Date =
+    { day : Int
+    , month : Month
+    , year : Int
+    }
+
+
+type Month
+    = January
+    | February
+    | March
+    | April
+    | May
+    | June
+    | July
+    | August
+    | September
+    | October
+    | November
+    | December
 
 
 type Page
@@ -23,8 +48,7 @@ type Page
     | SettingsPage
 
 
-type alias Date =
-    { day : Int
-    , month : Int
-    , year : Int
-    }
+type AnswerState
+    = Waiting
+    | CorrectAnswer
+    | WrongAnswer

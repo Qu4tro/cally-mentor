@@ -4,7 +4,7 @@ import Domain.Date
 import Html exposing (Html, div, sup, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import Types exposing (Date, Model, Msg(..))
+import Types exposing (Date, Model, Month, Msg(..))
 
 
 h2 =
@@ -21,7 +21,7 @@ square =
 
 button =
     Html.button
-        [ class "border-0 px-1 mx-2 text-center text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-green-500"
+        [ class "relative border-0 px-1 mx-2 text-center text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-green-500"
         , onClick OneMoreDate
         ]
 
@@ -31,7 +31,7 @@ yearText =
     String.fromInt >> text
 
 
-monthText : Int -> Html Msg
+monthText : Month -> Html Msg
 monthText =
     Domain.Date.monthName >> text
 
@@ -50,7 +50,7 @@ dayText n =
 
 viewDate : Date -> Html Msg
 viewDate date =
-    div [ class "flex flex-wrap justify-center" ]
+    div [ class "flex flex-wrap flex-col lg:flex-row justify-center" ]
         [ div [ class "bg-gray-700 hover:bg-blue-700  todo-shadow" ]
             [ square [ yearText date.year ], tint ]
         , div [ class "bg-gray-700 hover:bg-blue-700  todo-shadow " ]

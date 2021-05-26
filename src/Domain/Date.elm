@@ -1,7 +1,7 @@
 module Domain.Date exposing (..)
 
 import Random
-import Types exposing (Date)
+import Types exposing (Date, Month(..))
 
 
 randomDateGenerator : Random.Generator Date
@@ -14,7 +14,20 @@ randomDateGenerator =
             }
         )
         (Random.int 1990 2030)
-        (Random.int 1 12)
+        (Random.uniform January
+            [ February
+            , March
+            , April
+            , May
+            , June
+            , July
+            , August
+            , September
+            , October
+            , November
+            , December
+            ]
+        )
         (Random.int 1 31)
 
 
@@ -23,81 +36,76 @@ isLeapYear year =
     ((modBy year 4 == 0) && (modBy year 100 /= 0)) || (modBy year 400 == 0)
 
 
-monthName : Int -> String
+monthName : Month -> String
 monthName month =
     case month of
-        1 ->
+        January ->
             "January"
 
-        2 ->
+        February ->
             "February"
 
-        3 ->
+        March ->
             "March"
 
-        4 ->
+        April ->
             "April"
 
-        5 ->
+        May ->
             "May"
 
-        6 ->
+        June ->
             "June"
 
-        7 ->
+        July ->
             "July"
 
-        8 ->
+        August ->
             "August"
 
-        9 ->
+        September ->
             "September"
 
-        10 ->
+        October ->
             "October"
 
-        11 ->
+        November ->
             "November"
 
-        12 ->
+        December ->
             "December"
-
-        _ ->
-            "This is awkward!"
 
 
 dayWithSuffix : Int -> ( String, String )
 dayWithSuffix day =
     let
-        lastDigitOf =
-            modBy 10
+        lastDigit =
+            day |> modBy 10
 
-        lastTwoDigitsOf =
-            modBy 100
+        butLastDigit =
+            (day |> modBy 100) // 10
 
         suffix =
-            case lastTwoDigitsOf day of
-                11 ->
+            case ( butLastDigit, lastDigit ) of
+                (1, 1) ->
                     "th"
 
-                12 ->
+                (1, 2) ->
                     "th"
 
-                13 ->
+                (1, 3) ->
                     "th"
+
+                (_, 1) ->
+                    "st"
+
+                (_, 2) ->
+                    "nd"
+
+                (_, 3) ->
+                    "rd"
 
                 _ ->
-                    case lastDigitOf day of
-                        1 ->
-                            "st"
-
-                        2 ->
-                            "nd"
-
-                        3 ->
-                            "rd"
-
-                        _ ->
-                            "th"
+                    "th"
     in
     ( String.fromInt day, suffix )

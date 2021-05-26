@@ -2,7 +2,7 @@ module Domain.Calc exposing (..)
 
 import Array
 import Domain.Date
-import Types exposing (Date)
+import Types exposing (Date, Month(..))
 
 
 dayCode : Date -> Int
@@ -14,48 +14,46 @@ monthCode : Date -> Int
 monthCode date =
     let
         leapDeficit =
-            (date.month == 1 || date.month == 2) && Domain.Date.isLeapYear date.year
+            (date.month == January || date.month == February)
+                && Domain.Date.isLeapYear date.year
 
         monthValue =
             case date.month of
-                1 ->
+                January ->
+                    6
+
+                February ->
+                    2
+
+                March ->
+                    2
+
+                April ->
                     5
 
-                2 ->
+                May ->
+                    0
+
+                June ->
+                    3
+
+                July ->
+                    5
+
+                August ->
                     1
 
-                3 ->
-                    1
+                September ->
+                    4
 
-                4 ->
-                    1
+                October ->
+                    6
 
-                5 ->
-                    1
+                November ->
+                    2
 
-                6 ->
-                    1
-
-                7 ->
-                    1
-
-                8 ->
-                    1
-
-                9 ->
-                    1
-
-                10 ->
-                    1
-
-                11 ->
-                    1
-
-                12 ->
-                    1
-
-                _ ->
-                    Debug.todo "I broke"
+                December ->
+                    4
     in
     if not leapDeficit then
         monthValue
@@ -68,7 +66,7 @@ yearCode : Date -> Int
 yearCode date =
     let
         y =
-            modBy 100 date.year
+            date.year |> modBy 100
     in
     y + y // 4
 
@@ -76,18 +74,21 @@ yearCode date =
 centuryCode : Date -> Int
 centuryCode date =
     let
-        cycleArray =
-            [ 0, 3, 5, 1 ] |> Array.fromList
-
         c =
             date.year // 100
-
-        index =
-            modBy 4 c
     in
-    Array.get index cycleArray |> Maybe.withDefault (Debug.todo "I broke")
+    2 * (3 - modBy 5 c) + 1
 
 
 dropSevens : Int -> Int
 dropSevens =
     modBy 7
+
+
+weekday : Date -> Int
+weekday date =
+    dayCode date
+        + monthCode date
+        + yearCode date
+        + centuryCode date
+        |> dropSevens
