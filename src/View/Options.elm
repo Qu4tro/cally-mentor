@@ -3,8 +3,15 @@ module View.Options exposing (..)
 import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
+import Types exposing (AnswerState(..), Model, Msg(..))
 
-import Types exposing (Model, Msg(..))
+
+ifA cond attr =
+    if cond then
+        attr
+
+    else
+        class ""
 
 
 div =
@@ -16,13 +23,24 @@ button attrs elems =
 
 
 view : Model -> Html Msg
-view _ =
+view model =
+    let
+        answered =
+            model.answerState /= Waiting
+
+        option weekdayNumber weekdayName =
+            button
+                [ PickOption weekdayNumber |> onClick
+                , ifA (model.weekday == weekdayNumber && answered) (class "bg-green-500")
+                ]
+                [ text weekdayName ]
+    in
     div
-        [ button [PickOption 0 |> onClick] [ text "Sunday" ]
-        , button [PickOption 1 |> onClick] [ text "Monday" ]
-        , button [PickOption 2 |> onClick] [ text "Tuesday" ]
-        , button [PickOption 3 |> onClick] [ text "Wednesday" ]
-        , button [PickOption 4 |> onClick] [ text "Thursday" ]
-        , button [PickOption 5 |> onClick] [ text "Friday" ]
-        , button [PickOption 6 |> onClick] [ text "Saturday" ]
+        [ option 0 "Sunday"
+        , option 1 "Monday"
+        , option 2 "Tueday"
+        , option 3 "Wednesday"
+        , option 4 "Thursday"
+        , option 5 "Friday"
+        , option 6 "Saturday"
         ]

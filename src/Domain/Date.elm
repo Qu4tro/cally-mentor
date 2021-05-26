@@ -1,34 +1,6 @@
 module Domain.Date exposing (..)
 
-import Random
 import Types exposing (Date, Month(..))
-
-
-randomDateGenerator : Random.Generator Date
-randomDateGenerator =
-    Random.map3
-        (\y m d ->
-            { year = y
-            , month = m
-            , day = d
-            }
-        )
-        (Random.int 1990 2030)
-        (Random.uniform January
-            [ February
-            , March
-            , April
-            , May
-            , June
-            , July
-            , August
-            , September
-            , October
-            , November
-            , December
-            ]
-        )
-        (Random.int 1 31)
 
 
 isLeapYear : Int -> Bool
@@ -87,22 +59,22 @@ dayWithSuffix day =
 
         suffix =
             case ( butLastDigit, lastDigit ) of
-                (1, 1) ->
+                ( 1, 1 ) ->
                     "th"
 
-                (1, 2) ->
+                ( 1, 2 ) ->
                     "th"
 
-                (1, 3) ->
+                ( 1, 3 ) ->
                     "th"
 
-                (_, 1) ->
+                ( _, 1 ) ->
                     "st"
 
-                (_, 2) ->
+                ( _, 2 ) ->
                     "nd"
 
-                (_, 3) ->
+                ( _, 3 ) ->
                     "rd"
 
                 _ ->

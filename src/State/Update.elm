@@ -1,7 +1,7 @@
 module State.Update exposing (..)
 
 import Domain.Calc
-import Domain.Date
+import Domain.DateGeneration
 import Random
 import Types exposing (AnswerState(..), Model, Msg(..))
 
@@ -13,10 +13,16 @@ update msg model =
             ( model, Cmd.none )
 
         OneMoreDate ->
-            ( model, Random.generate NewDate Domain.Date.randomDateGenerator )
+            ( model, Random.generate NewDate Domain.DateGeneration.random )
 
         NewDate newDate ->
-            ( { model | date = newDate }, Cmd.none )
+            ( { model
+                | date = newDate
+                , weekday = Domain.Calc.weekday newDate
+                , answerState = Waiting
+              }
+            , Cmd.none
+            )
 
         ChangePageTo newPage ->
             ( { model | page = newPage }, Cmd.none )

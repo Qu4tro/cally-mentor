@@ -1,7 +1,7 @@
 module State.Init exposing (..)
 
 import Domain.Calc
-import Domain.Date
+import Domain.DateGeneration
 import Random
 import Types exposing (..)
 
@@ -14,8 +14,9 @@ initDate =
 init : ( Model, Cmd Msg )
 init =
     ( { date = initDate
+      , weekday = 0
       , page = HomePage
       , answerState = Waiting
       }
-    , Random.generate NewDate Domain.Date.randomDateGenerator
+    , Random.generate NewDate Domain.DateGeneration.random
     )

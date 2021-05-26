@@ -3,6 +3,7 @@ module Types exposing (..)
 
 type alias Model =
     { date : Date
+    , weekday : Int
     , page : Page
     , answerState : AnswerState
     }
