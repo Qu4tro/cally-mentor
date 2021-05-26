@@ -1,6 +1,5 @@
 module State.Init exposing (..)
 
-import Domain.Calc
 import Domain.DateGeneration
 import Random
 import Types exposing (..)
@@ -14,9 +13,11 @@ initDate =
 init : ( Model, Cmd Msg )
 init =
     ( { date = initDate
-      , weekday = 0
+      , weekday = Sunday
+      , gameMode = TrainWeekdays
+      , yearRange = ( 2000, 2025 )
       , page = HomePage
       , answerState = Waiting
       }
-    , Random.generate NewDate Domain.DateGeneration.random
+    , Random.generate NewDate (Domain.DateGeneration.random ( 2000, 2025 ))
     )

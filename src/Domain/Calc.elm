@@ -1,7 +1,7 @@
 module Domain.Calc exposing (..)
 
 import Array
-import Domain.Date
+import Domain.Year as Year
 import Types exposing (Date, Month(..))
 
 
@@ -15,7 +15,7 @@ monthCode date =
     let
         leapDeficit =
             (date.month == January || date.month == February)
-                && Domain.Date.isLeapYear date.year
+                && Year.isLeap date.year
 
         monthValue =
             case date.month of
@@ -83,12 +83,3 @@ centuryCode date =
 dropSevens : Int -> Int
 dropSevens =
     modBy 7
-
-
-weekday : Date -> Int
-weekday date =
-    dayCode date
-        + monthCode date
-        + yearCode date
-        + centuryCode date
-        |> dropSevens

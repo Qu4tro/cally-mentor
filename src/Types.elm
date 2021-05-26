@@ -3,7 +3,9 @@ module Types exposing (..)
 
 type alias Model =
     { date : Date
-    , weekday : Int
+    , weekday : Weekday
+    , gameMode : GameMode
+    , yearRange : ( Year, Year )
     , page : Page
     , answerState : AnswerState
     }
@@ -14,8 +16,7 @@ type Msg
     | OneMoreDate
     | NewDate Date
     | ChangePageTo Page
-    | PickOption Int
-    | ClearAnswerState
+    | PickOption Weekday
 
 
 type alias Date =
@@ -23,6 +24,24 @@ type alias Date =
     , month : Month
     , year : Int
     }
+
+
+type Weekday
+    = Sunday
+    | Monday
+    | Tuesday
+    | Wednesday
+    | Thursday
+    | Friday
+    | Saturday
+
+
+type alias Day =
+    Int
+
+
+type alias Year =
+    Int
 
 
 type Month
@@ -44,12 +63,18 @@ type Page
     = HomePage
     | AboutPage
     | GuideAlgorithmPage
-    | GuideUIPage
     | GameModesPage
     | SettingsPage
+
+
+type GameMode
+    = TrainWeekdays
+    | TrainYears
+    | TrainMonths
+    | TrainSevens
 
 
 type AnswerState
     = Waiting
     | CorrectAnswer
-    | WrongAnswer
+    | WrongAnswer Weekday

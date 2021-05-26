@@ -1,9 +1,9 @@
 module State.Update exposing (..)
 
-import Domain.Calc
-import Domain.DateGeneration
+import Domain.DateGeneration as DateGeneration
+import Domain.Weekday as Weekday
 import Random
-import Types exposing (AnswerState(..), Model, Msg(..))
+import Types exposing (..)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -13,12 +13,27 @@ update msg model =
             ( model, Cmd.none )
 
         OneMoreDate ->
-            ( model, Random.generate NewDate Domain.DateGeneration.random )
+            let
+                randomDateF =
+                    case model.gameMode of
+                        TrainYears ->
+                            DateGeneration.unknownYearGenerator
+
+                        TrainMonths ->
+                            DateGeneration.unknownMonthGenerator
+
+                        _ ->
+                            DateGeneration.random
+
+                cmd =
+                    Random.generate NewDate (randomDateF model.yearRange)
+            in
+            ( model, cmd )
 
         NewDate newDate ->
             ( { model
                 | date = newDate
-                , weekday = Domain.Calc.weekday newDate
+                , weekday = Weekday.fromDate newDate
                 , answerState = Waiting
               }
             , Cmd.none
@@ -30,16 +45,18 @@ update msg model =
         PickOption weekday ->
             let
                 isCorrect =
-                    Domain.Calc.weekday model.date == weekday
+                    Weekday.fromDate model.date == weekday
 
                 newAnswerState =
                     if isCorrect then
                         CorrectAnswer
 
                     else
-                        WrongAnswer
+                        WrongAnswer weekday
             in
-            ( { model | answerState = newAnswerState }, Cmd.none )
+            case model.answerState of
+                Waiting ->
+                    ( { model | answerState = newAnswerState }, Cmd.none )
 
-        ClearAnswerState ->
-            ( { model | answerState = Waiting }, Cmd.none )
+                _ ->
+                    ( model, Cmd.none )

@@ -3,12 +3,11 @@ module View exposing (..)
 import Html exposing (Html)
 import Html.Attributes exposing (class)
 import Types exposing (Model, Msg, Page(..))
-import View.Date
 import View.Footer
 import View.Header
 import View.Navbar
-import View.Options
-import View.Toolbar
+import View.Quiz.Date
+import View.Quiz.Options
 
 
 main_ =
@@ -27,8 +26,8 @@ view model =
                 HomePage ->
                     article
                         [ View.Header.view model
-                        , View.Date.view model
-                        , View.Options.view model
+                        , View.Quiz.Date.view model
+                        , View.Quiz.Options.view model
                         , View.Footer.view model
                         ]
 
