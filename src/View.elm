@@ -2,7 +2,7 @@ module View exposing (..)
 
 import Html exposing (Html)
 import Types exposing (Model, Msg, Page(..))
-import View.Common exposing (plain, withClass)
+import View.Common exposing (withClass, simpleWithClass)
 import View.Footer
 import View.Header
 import View.Modes
@@ -14,14 +14,14 @@ import View.Settings
 
 main_ =
     Html.main_
-        |> withClass "flex min-h-screen max-w-screen bg-gray-100"
-        |> plain
+        |> withClass "flex"
+        |> simpleWithClass "min-h-screen max-w-screen bg-gray-100"
 
 
 article =
     Html.article
-        |> withClass "flex flex-col w-3/6 mx-auto my-2 items-center justify-start"
-        |> plain
+        |> withClass "flex flex-col justify-start items-center"
+        |> simpleWithClass "w-3/6 mx-auto my-2"
 
 
 view : Model -> Html Msg

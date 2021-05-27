@@ -1,7 +1,7 @@
 module View.Quiz.Options exposing (..)
 
-import Domain.Options
-import Domain.Weekday
+import Domain.Options as Options
+import Domain.Weekday as Weekday
 import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
@@ -11,12 +11,15 @@ import View.Common exposing (simpleWithClass, withClass)
 
 span =
     Html.span
-        |> simpleWithClass "flex flex-wrap justify-center font-thin font-serif my-10"
+        |> withClass "flex flex-wrap justify-center"
+        |> simpleWithClass "font-thin font-serif m-10"
 
 
 button =
     Html.button
-        |> withClass "p-5 m-4 text-white text-4xl rounded-sm todo-shadow cursor-pointer select-none clicked "
+        |> withClass "rounded-sm todo-shadow p-4 my-5 mx-10"
+        |> withClass "text-white text-2xl"
+        |> withClass "cursor-pointer select-none clicked"
 
 
 view : Model -> Html Msg
@@ -25,10 +28,10 @@ view m =
         option weekday =
             let
                 weekdayName =
-                    Domain.Weekday.toString weekday
+                    Weekday.toString weekday
 
                 isPickedOption =
-                    Domain.Options.selected m.answerState m.weekday == Just weekday
+                    Options.selected m == Just weekday
 
                 isCorrectOption =
                     m.weekday == weekday

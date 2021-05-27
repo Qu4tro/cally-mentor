@@ -5,7 +5,7 @@ import Domain.Month as Month
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import Types exposing (Model, Msg(..))
+import Types exposing (Model, Msg(..), AnswerState(..))
 import View.Common exposing (simpleWithClass, withClass)
 
 
@@ -21,21 +21,27 @@ ol =
 
 li =
     Html.li
-        |> simpleWithClass "bg-gray-700 hover:bg-blue-700 todo-shadow"
+            |> withClass "border-b-8 border-gray-800"
 
+        |> simpleWithClass "bg-gray-700 hover:bg-blue-700 todo-shadow"
+        
 
 p =
     Html.p
-        |> simpleWithClass "pt-6 pb-4 px-14 text-lg xl:text-5xl font-serif text-center"
+        |> withClass "font-serif text-center text-lg xl:text-5xl"
+        |> simpleWithClass "pt-6 pb-4 px-14"
 
 
 tint =
-    div [ class "opacity-40 bg-gray-800 py-4" ] []
+    div [ class "opacity-40 bg-gray-800 " ] []
 
 
 button =
     Html.button
-        |> withClass "relative border-0 px-1 mx-2 text-center text-lg lg:text-4xl text-white rounded-sm todo-shadow cursor-pointer select-none clicked bg-gray-800 hover:bg-green-500"
+        |> withClass "text-white text-center text-lg lg:text-3xl"
+        |> withClass "mx-2 rounded-sm todo-shadow"
+        |> withClass "cursor-pointer select-none clicked"
+        |> withClass "border-b-8 border-gray-800"
 
 
 sup =
@@ -63,11 +69,14 @@ view model =
                 , li [ p [ text (Month.toString date.month) ], tint ]
                 , li [ p [ viewDay ], tint ]
                 ]
+
+        buttonBgClass =
+            if model.answerState /= Waiting then "bg-green-500" else "bg-gray-700 hover:bg-green-500"
     in
     div []
         [ h2 [ text "What weekday does the given date fall on?" ]
         , div [ class "flex" ]
             [ viewDate
-            , button [ onClick OneMoreDate ] [ text "🗘" ]
+            , button [ class buttonBgClass, onClick OneMoreDate ] [ text "🗘" ]
             ]
         ]

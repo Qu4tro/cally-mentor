@@ -1,7 +1,7 @@
 module View.Settings exposing (..)
 
 import Html exposing (Html, text)
-import View.Common exposing (plain, withClass)
+import View.Common exposing (withClass)
 
 
 view =

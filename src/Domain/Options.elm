@@ -1,11 +1,11 @@
 module Domain.Options exposing (..)
 
-import Types exposing (AnswerState(..), Weekday)
+import Types exposing (Model, AnswerState(..), Weekday)
 
 
-selected : AnswerState -> Weekday -> Maybe Weekday
-selected answerState weekday =
-    case answerState of
+selected : Model -> Maybe Weekday
+selected m =
+    case m.answerState of
         Waiting ->
             Nothing
 
@@ -13,4 +13,4 @@ selected answerState weekday =
             Just answer
 
         CorrectAnswer ->
-            Just weekday
+            Just m.weekday

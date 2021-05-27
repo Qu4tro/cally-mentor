@@ -3,7 +3,7 @@ module View.Navbar exposing (..)
 import Html exposing (Html, text)
 import Html.Events exposing (onClick)
 import Types exposing (Model, Msg(..), Page(..))
-import View.Common exposing (plain, withClass)
+import View.Common exposing (withClass, simpleWithClass)
 
 
 h4 =
@@ -13,14 +13,12 @@ h4 =
 
 nav =
     Html.nav
-        |> withClass "fixed top-24 h-full ml-10"
-        |> plain
+        |> simpleWithClass "fixed top-24 h-full ml-10"
 
 
 span =
     Html.span
-        |> withClass "h-4/6 flex flex-col justify-around"
-        |> plain
+        |> simpleWithClass "h-4/6 flex flex-col justify-around"
 
 
 view : Model -> Html Msg

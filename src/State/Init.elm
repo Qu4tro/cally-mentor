@@ -12,12 +12,20 @@ initDate =
 
 init : ( Model, Cmd Msg )
 init =
-    ( { date = initDate
-      , weekday = Sunday
-      , gameMode = TrainWeekdays
-      , yearRange = ( 2000, 2025 )
-      , page = HomePage
-      , answerState = Waiting
-      }
-    , Random.generate NewDate (Domain.DateGeneration.random ( 2000, 2025 ))
+    let
+        model =
+            { date = initDate
+            , weekday = Sunday
+            , gameMode = TrainWeekdays
+            , yearRange = ( 2000, 2025 )
+            , page = HomePage
+            , answerState = Waiting
+            }
+
+        commands =
+            [ Random.generate NewDate (Domain.DateGeneration.random model.yearRange)
+            ]
+    in
+    ( model
+    , Cmd.batch commands
     )
