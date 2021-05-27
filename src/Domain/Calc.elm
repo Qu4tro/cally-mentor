@@ -1,6 +1,5 @@
 module Domain.Calc exposing (..)
 
-import Array
 import Domain.Year as Year
 import Types exposing (Date, Month(..))
 

@@ -1,3 +1,4 @@
+
 image:
   file: .gitpod.Dockerfile
 
@@ -11,3 +12,8 @@ tasks:
   - before: yarn
     init: yarn elm-app build
     command: yarn elm-app start
+
+
+vscode:
+  extensions:
+    - elmtooling.elm-ls-vscode

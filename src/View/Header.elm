@@ -1,7 +1,6 @@
 module View.Header exposing (..)
 
 import Html exposing (Html, text)
-import Html.Attributes exposing (class)
 import Types exposing (Model, Msg)
 import View.Common exposing (plain, withClass)
 

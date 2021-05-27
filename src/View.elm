@@ -1,7 +1,6 @@
 module View exposing (..)
 
 import Html exposing (Html)
-import Html.Attributes exposing (class)
 import Types exposing (Model, Msg, Page(..))
 import View.Common exposing (plain, withClass)
 import View.Footer

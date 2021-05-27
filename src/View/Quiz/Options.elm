@@ -6,7 +6,7 @@ import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..), Weekday(..))
-import View.Common exposing (plain, simpleWithClass, withClass)
+import View.Common exposing (simpleWithClass, withClass)
 
 
 span =
@@ -44,7 +44,7 @@ view m =
                         ( _, True, False ) ->
                             "bg-red-500 hover:bg-red-500 "
 
-                        ( _, _, _ ) ->
+                        _ ->
                             "bg-gray-700 hover:bg-yellow-500 "
             in
             button

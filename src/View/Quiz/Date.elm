@@ -1,13 +1,12 @@
 module View.Quiz.Date exposing (..)
 
-import Domain.Date
 import Domain.Day as Day
 import Domain.Month as Month
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import Types exposing (Date, Model, Month, Msg(..))
-import View.Common exposing (plain, simpleWithClass, withClass)
+import Types exposing (Model, Msg(..))
+import View.Common exposing (simpleWithClass, withClass)
 
 
 h2 =
