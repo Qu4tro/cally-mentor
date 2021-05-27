@@ -31,7 +31,7 @@ li =
     Html.li
         |> withClass "font-serif text-center text-lg xl:text-5xl"
         |> withClass "pt-6 pb-4 px-14"
-        |> withClass "bg-gray-700 hover:bg-blue-700 todo-shadow"
+        |> withClass "bg-gray-700 hover:bg-blue-500 todo-shadow"
         |> finallyWithClass "border-b-8 border-gray-800"
 
 
@@ -40,7 +40,8 @@ button =
         |> withClass "text-white text-center text-lg lg:text-3xl"
         |> withClass "mx-2 rounded-sm todo-shadow"
         |> withClass "cursor-pointer select-none clicked"
-        |> withClass "border-b-8 border-gray-800"
+        |> withClass "border-b-8 border-gray-800 "
+        |> withClass "bg-gray-700  hover:bg-green-500"
 
 
 view : Model -> Html Msg
@@ -56,17 +57,17 @@ view model =
                 , li [ span [ text dayString, sup [ text suffix ] ] ]
                 ]
 
-        buttonBgClass =
+        buttonAttrs =
             if model.answerState /= Waiting then
-                "bg-green-500"
+                [ class "border-green-500", onClick OneMoreDate ] 
 
             else
-                "bg-gray-700 hover:bg-green-500"
+                [ onClick OneMoreDate ]
     in
     div []
         [ h2 [ text "What weekday does the given date fall on?" ]
         , div [ class "flex" ]
             [ viewDate
-            , button [ class buttonBgClass, onClick OneMoreDate ] [ text "🗘" ]
+            , button buttonAttrs [ text "🗘" ]
             ]
         ]

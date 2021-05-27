@@ -8,6 +8,10 @@ import Types exposing (GameMode(..), Model, Msg(..), Page(..))
 import View.Common exposing (finallyWithClass, textElem, withClass)
 
 
+ol =
+    Html.ol []
+
+
 div =
     Html.div
         |> finallyWithClass "w-3/4"
@@ -23,11 +27,6 @@ h3 =
     Html.h3
         |> withClass "font-sans font-thin text-xl"
         |> withClass "cursor-pointer hover:underline"
-
-
-ol =
-    Html.ol
-        |> finallyWithClass "something"
 
 
 p =

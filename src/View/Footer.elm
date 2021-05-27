@@ -24,6 +24,6 @@ view _ =
     footer
         [ span
             [ b [ text "Tip: " ]
-            , text "There's a setting to disable the tooltips."
+            , text "Settings are saved on your browser automatically."
             ]
         ]

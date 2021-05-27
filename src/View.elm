@@ -42,6 +42,7 @@ view model =
                 SettingsPage ->
                     [ View.Header.view model
                     , View.Settings.view model
+                    , View.Footer.view model
                     ]
 
                 GameModesPage ->
