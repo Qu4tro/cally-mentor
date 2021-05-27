@@ -67,7 +67,7 @@ unknownYearGenerator yearRange =
                             Calc.monthCode parcialDate
 
                         validDay =
-                            Calc.dropSevens (7 - monthCode)
+                            7 - Calc.dropSevens monthCode
                     in
                     Random.uniform validDay (daysOnTheSameWeekday validDay)
             in
@@ -105,7 +105,7 @@ unknownMonthGenerator yearRange =
                                 + Calc.centuryCode parcialDate
 
                         validDay =
-                            Calc.dropSevens (7 - yearCode)
+                            7 - Calc.dropSevens yearCode
                     in
                     Random.uniform validDay (daysOnTheSameWeekday validDay)
             in

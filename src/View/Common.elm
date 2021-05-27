@@ -1,6 +1,6 @@
 module View.Common exposing (..)
 
-import Html exposing (Attribute, Html)
+import Html exposing (Attribute, Html, text)
 import Html.Attributes exposing (class)
 
 
@@ -10,14 +10,19 @@ withClass :
     -> List (Attribute msg)
     -> List (Html msg)
     -> Html msg
-withClass className f attrs elems =
-    f (class className :: attrs) elems
+withClass className elem attrs elems =
+    elem (class className :: attrs) elems
 
 
-simpleWithClass :
+finallyWithClass :
     String
     -> (List (Attribute msg) -> List (Html msg) -> Html msg)
     -> List (Html msg)
     -> Html msg
-simpleWithClass className f elems =
-    withClass className f [] elems
+finallyWithClass className elem elems =
+    withClass className elem [] elems
+
+
+textElem : (List (Html msg) -> Html msg) -> String -> Html msg
+textElem elem string =
+    elem [ text string ]

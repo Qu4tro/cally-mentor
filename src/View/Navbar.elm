@@ -1,9 +1,11 @@
 module View.Navbar exposing (..)
 
+import Domain.Page as Page
 import Html exposing (Html, text)
+import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (Model, Msg(..), Page(..))
-import View.Common exposing (simpleWithClass, withClass)
+import View.Common exposing (finallyWithClass, withClass)
 
 
 h4 =
@@ -13,29 +15,40 @@ h4 =
 
 nav =
     Html.nav
-        |> simpleWithClass "fixed top-24 h-full ml-10"
+        |> finallyWithClass "fixed top-24 h-full ml-10"
 
 
 span =
     Html.span
-        |> simpleWithClass "h-4/6 flex flex-col justify-around"
+        |> finallyWithClass "h-4/6 flex flex-col justify-around"
 
 
 view : Model -> Html Msg
-view _ =
+view model =
+    let
+        option page =
+            let
+                selectedPageClass =
+                    "font-normal"
+
+                attrs =
+                    if page == model.page then
+                        [ class selectedPageClass
+                        , ChangePageTo page |> onClick
+                        ]
+
+                    else
+                        [ ChangePageTo page |> onClick ]
+            in
+            h4 attrs [ text (Page.toString page) ]
+    in
     nav
         [ span
-            [ h4 [ ChangePageTo HomePage |> onClick ]
-                [ text "Home" ]
-            , h4 [ ChangePageTo AboutPage |> onClick ]
-                [ text "About" ]
-            , h4 [ ChangePageTo GuidePage |> onClick ]
-                [ text "Guide" ]
-            , h4 [ ChangePageTo GameModesPage |> onClick ]
-                [ text "Modes" ]
-            , h4 [ ChangePageTo SettingsPage |> onClick ]
-                [ text "Settings" ]
-            , h4 []
-                [ text "Github" ]
+            [ option HomePage
+            , option AboutPage
+            , option GuidePage
+            , option GameModesPage
+            , option SettingsPage
+            , h4 [] [ text "Github" ]
             ]
         ]

@@ -16,6 +16,7 @@ type Msg
     | OneMoreDate
     | NewDate Date
     | ChangePageTo Page
+    | ChangeGameModeTo GameMode
     | PickOption Weekday
 
 

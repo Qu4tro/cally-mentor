@@ -6,29 +6,33 @@ import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..))
-import View.Common exposing (simpleWithClass, withClass)
+import View.Common exposing (finallyWithClass, withClass)
+
+
+sup =
+    Html.sup []
+
+
+span =
+    Html.span []
 
 
 h2 =
     Html.h2
-        |> simpleWithClass "font-sans font-thin text-3xl text-center mb-10"
+        |> finallyWithClass "font-sans font-thin text-3xl text-center mb-10"
 
 
 ol =
     Html.ol
-        |> simpleWithClass "flex flex-wrap flex-row justify-center text-white"
+        |> finallyWithClass "flex flex-wrap flex-row justify-center text-white"
 
 
 li =
     Html.li
-        |> withClass "border-b-8 border-gray-800"
-        |> simpleWithClass "bg-gray-700 hover:bg-blue-700 todo-shadow"
-
-
-p =
-    Html.p
         |> withClass "font-serif text-center text-lg xl:text-5xl"
-        |> simpleWithClass "pt-6 pb-4 px-14"
+        |> withClass "pt-6 pb-4 px-14"
+        |> withClass "bg-gray-700 hover:bg-blue-700 todo-shadow"
+        |> finallyWithClass "border-b-8 border-gray-800"
 
 
 button =
@@ -39,30 +43,17 @@ button =
         |> withClass "border-b-8 border-gray-800"
 
 
-sup =
-    Html.sup []
-
-
 view : Model -> Html Msg
 view model =
     let
-        date =
-            model.date
-
         ( dayString, suffix ) =
-            Day.ordinal date.day
-
-        viewDay =
-            div []
-                [ text dayString
-                , sup [ text suffix ]
-                ]
+            Day.ordinal model.date.day
 
         viewDate =
             ol
-                [ li [ p [ text (String.fromInt date.year) ] ]
-                , li [ p [ text (Month.toString date.month) ] ]
-                , li [ p [ viewDay ] ]
+                [ li [ text (String.fromInt model.date.year) ]
+                , li [ text (Month.toString model.date.month) ]
+                , li [ span [ text dayString, sup [ text suffix ] ] ]
                 ]
 
         buttonBgClass =
