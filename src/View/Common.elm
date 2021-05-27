@@ -11,7 +11,7 @@ withClass :
     -> List (Html msg)
     -> Html msg
 withClass className f attrs elems =
-    f (( class className ) :: attrs) elems
+    f (class className :: attrs) elems
 
 
 simpleWithClass :

@@ -3,7 +3,7 @@ module View.Navbar exposing (..)
 import Html exposing (Html, text)
 import Html.Events exposing (onClick)
 import Types exposing (Model, Msg(..), Page(..))
-import View.Common exposing (withClass, simpleWithClass)
+import View.Common exposing (simpleWithClass, withClass)
 
 
 h4 =

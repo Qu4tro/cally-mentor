@@ -2,7 +2,7 @@ module View exposing (..)
 
 import Html exposing (Html)
 import Types exposing (Model, Msg, Page(..))
-import View.Common exposing (withClass, simpleWithClass)
+import View.Common exposing (simpleWithClass, withClass)
 import View.Footer
 import View.Header
 import View.Modes

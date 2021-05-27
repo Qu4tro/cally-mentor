@@ -1,6 +1,6 @@
 module Domain.Options exposing (..)
 
-import Types exposing (Model, AnswerState(..), Weekday)
+import Types exposing (AnswerState(..), Model, Weekday)
 
 
 selected : Model -> Maybe Weekday
