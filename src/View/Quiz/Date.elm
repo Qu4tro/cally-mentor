@@ -6,7 +6,7 @@ import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..))
-import View.Common exposing (finallyWithClass, withClass)
+import View.Common exposing (plain, withClass)
 
 
 sup =
@@ -19,12 +19,14 @@ span =
 
 h2 =
     Html.h2
-        |> finallyWithClass "font-sans font-thin text-3xl text-center mb-10"
+        |> withClass "font-sans font-thin text-3xl text-center mb-10"
+        |> plain
 
 
 ol =
     Html.ol
-        |> finallyWithClass "flex flex-wrap flex-row justify-center text-white"
+        |> withClass "flex flex-wrap flex-row justify-center text-white"
+        |> plain
 
 
 li =
@@ -32,7 +34,8 @@ li =
         |> withClass "font-serif text-center text-lg xl:text-5xl"
         |> withClass "pt-6 pb-4 px-14"
         |> withClass "bg-gray-700 hover:bg-blue-500 todo-shadow"
-        |> finallyWithClass "border-b-8 border-gray-800"
+        |> withClass "border-b-8 border-gray-800"
+        |> plain
 
 
 button =

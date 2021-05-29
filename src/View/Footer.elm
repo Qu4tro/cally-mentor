@@ -2,7 +2,7 @@ module View.Footer exposing (..)
 
 import Html exposing (Html, b, text)
 import Types exposing (Model, Msg)
-import View.Common exposing (finallyWithClass)
+import View.Common exposing (plain, withClass)
 
 
 b =
@@ -11,12 +11,14 @@ b =
 
 span =
     Html.span
-        |> finallyWithClass "font-sans font-thin text-xl text-center my-2"
+        |> withClass "font-sans font-thin text-xl text-center my-2"
+        |> plain
 
 
 footer =
     Html.footer
-        |> finallyWithClass "w-3/6 my-4"
+        |> withClass "w-3/6 my-4"
+        |> plain
 
 
 view : Model -> Html Msg

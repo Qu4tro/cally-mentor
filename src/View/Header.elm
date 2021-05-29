@@ -2,17 +2,19 @@ module View.Header exposing (..)
 
 import Html exposing (Html, text)
 import Types exposing (Model, Msg)
-import View.Common exposing (finallyWithClass)
+import View.Common exposing (plain, withClass)
 
 
 h1 =
     Html.h1
-        |> finallyWithClass "font-sans font-thin text-5xl text-center my-14"
+        |> withClass "font-sans font-thin text-5xl text-center my-14"
+        |> plain
 
 
 header =
     Html.header
-        |> finallyWithClass "mb-10"
+        |> withClass "mb-10"
+        |> plain
 
 
 view : Model -> Html Msg

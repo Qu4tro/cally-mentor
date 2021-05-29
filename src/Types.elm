@@ -15,6 +15,8 @@ type Msg
     = NoOp
     | OneMoreDate
     | NewDate Date
+    | ChangeMinYearTo Year
+    | ChangeMaxYearTo Year
     | ChangePageTo Page
     | ChangeGameModeTo GameMode
     | PickOption Weekday

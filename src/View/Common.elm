@@ -14,15 +14,22 @@ withClass className elem attrs elems =
     elem (class className :: attrs) elems
 
 
-finallyWithClass :
-    String
-    -> (List (Attribute msg) -> List (Html msg) -> Html msg)
+asText : (List (Html msg) -> Html msg) -> String -> Html msg
+asText elem string =
+    elem [ text string ]
+
+
+plain :
+    (List (Attribute msg) -> List (Html msg) -> Html msg)
     -> List (Html msg)
     -> Html msg
-finallyWithClass className elem elems =
-    withClass className elem [] elems
+plain elem =
+    elem []
 
 
-textElem : (List (Html msg) -> Html msg) -> String -> Html msg
-textElem elem string =
-    elem [ text string ]
+basic :
+    (List (Attribute msg) -> List (Html msg) -> Html msg)
+    -> List (Attribute msg)
+    -> Html msg
+basic elem attrs =
+    elem attrs []

@@ -29,6 +29,20 @@ update msg model =
             , Cmd.none
             )
 
+        ChangeMinYearTo year ->
+            let
+                yearRange =
+                    ( year, Tuple.second model.yearRange )
+            in
+            ( { model | yearRange = yearRange }, Cmd.none )
+
+        ChangeMaxYearTo year ->
+            let
+                yearRange =
+                    ( Tuple.first model.yearRange, year )
+            in
+            ( { model | yearRange = yearRange }, Cmd.none )
+
         ChangePageTo newPage ->
             ( { model | page = newPage }, Cmd.none )
 

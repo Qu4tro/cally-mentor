@@ -6,13 +6,14 @@ import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..), Weekday(..))
-import View.Common exposing (finallyWithClass, withClass)
+import View.Common exposing (plain, withClass)
 
 
 span =
     Html.span
         |> withClass "flex flex-wrap justify-center"
-        |> finallyWithClass "font-thin font-serif m-10"
+        |> withClass "font-thin font-serif m-10"
+        |> plain
 
 
 button =
