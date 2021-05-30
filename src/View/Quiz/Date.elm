@@ -35,7 +35,7 @@ li =
     Html.li
         |> withClass "font-serif text-center text-lg xl:text-5xl"
         |> withClass "pt-6 pb-4 px-14"
-        |> withClass "bg-gray-700 hover:bg-blue-500 todo-shadow"
+        |> withClass "bg-gray-700 hover:bg-blue-500 shadow"
         |> withClass "border-b-8 border-gray-800"
         |> plain
 
@@ -43,7 +43,7 @@ li =
 button =
     Html.button
         |> withClass "text-white text-center text-lg lg:text-3xl"
-        |> withClass "mx-2 rounded-sm todo-shadow"
+        |> withClass "mx-2 rounded-sm shadow"
         |> withClass "cursor-pointer select-none clicked"
         |> withClass "border-b-8 border-gray-800 "
         |> withClass "bg-gray-700  hover:bg-green-500"

@@ -9,8 +9,4 @@
   .clicked:active {
     @apply relative top-px shadow-none;
   }
-
-  .todo-shadow {
-    box-shadow: 3px 5px 5px #00000044;
-  }
 }

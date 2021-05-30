@@ -18,7 +18,7 @@ span =
 
 button =
     Html.button
-        |> withClass "rounded-sm todo-shadow p-4 my-5 mx-10"
+        |> withClass "rounded-sm shadow p-4 my-5 mx-10"
         |> withClass "text-white text-2xl"
         |> withClass "cursor-pointer select-none clicked"
 
