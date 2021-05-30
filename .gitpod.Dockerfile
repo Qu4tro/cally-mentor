@@ -7,4 +7,4 @@ RUN ls
 
 
 FROM gitpod/workspace-full
-COPY --from=builder /build/i18n2elm /workspace
+COPY --from=builder /build/i18n2elm /usr/bin
