@@ -40,19 +40,19 @@ view m =
                 bgClass =
                     case ( m.answerState, isPickedOption, isCorrectOption ) of
                         ( Waiting, _, _ ) ->
-                            "bg-gray-700 hover:bg-yellow-500 "
+                            class "bg-gray-700 hover:bg-yellow-500 "
 
                         ( _, _, True ) ->
-                            "bg-green-500 hover:bg-green-500 "
+                            class "bg-green-500 hover:bg-green-500 "
 
                         ( _, True, False ) ->
-                            "bg-red-500 hover:bg-red-500 "
+                            class "bg-red-500 hover:bg-red-500 "
 
                         _ ->
-                            "bg-gray-700 hover:bg-yellow-500 "
+                            class "bg-gray-700 hover:bg-yellow-500 "
             in
             button
-                [ class bgClass, PickOption weekday |> onClick ]
+                [ PickOption weekday |> onClick, bgClass  ]
                 [ text weekdayName ]
     in
     span

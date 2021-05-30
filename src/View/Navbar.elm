@@ -30,14 +30,9 @@ view model =
     let
         option page =
             let
-                selectedPageClass =
-                    "font-normal"
-
                 attrs =
                     if page == model.page then
-                        [ class selectedPageClass
-                        , ChangePageTo page |> onClick
-                        ]
+                        [ ChangePageTo page |> onClick, class "font-normal" ]
 
                     else
                         [ ChangePageTo page |> onClick ]
