@@ -3,9 +3,9 @@ module View.Settings exposing (..)
 import Domain.GameMode as GameMode
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class, type_, value)
-import Html.Events exposing (onInput)
+import Html.Events exposing (onInput, onClick)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))
-import View.Common exposing (asText, basic, plain, withClass)
+import View.Common exposing (asText, basic, plain, plainAsText, withClass)
 
 
 ol =
@@ -29,22 +29,26 @@ div =
 h2 =
     Html.h2
         |> withClass "text-3xl text-center mb-10"
-        |> plain
-        |> asText
+        |> plainAsText
 
 
 h3 =
-    Html.h3
+    Html.h4
         |> withClass "mx-2"
-        |> plain
+        |> plainAsText
+
+
+u =
+    Html.u
+        |> withClass "mx-2"
+        |> withClass "no-underline hover:underline cursor-pointer"
         |> asText
 
 
 p =
     Html.p
         |> withClass "ml-4 my-2"
-        |> plain
-        |> asText
+        |> plainAsText
 
 
 li =
@@ -97,18 +101,29 @@ view model =
             , p "A set of cheats and cheatsheets at a hover distance."
             ]
 
+        enabledClass = class "font-normal" 
         darkMode =
-            [ span
-                [ h3 "Dark mode enabled "
-                , h3 "― "
-                , h3 "Yes"
-                , h3 " / "
-                , h3 "No"
+            if model.darkModeEnabled then
+                [ span
+                    [ h3 "Dark mode enabled "
+                    , h3 "― "
+                    , u [ enabledClass ] "Yes"
+                    , h3 " / "
+                    , u [ ToggleDarkMode |> onClick ] "No"
+                    ]
+                , p "Spare your eyes."
                 ]
-            , p "Spare your eyes."
-
-            -- TODO
-            ]
+            else
+                [ span
+                    [ h3 "Dark mode enabled "
+                    , h3 "― "
+                    , u [ ToggleDarkMode |> onClick ] "Yes"
+                    , h3 " / "
+                    , u [enabledClass ] "No"
+                    ]
+                , p "Spare your eyes."
+                ]
+            
     in
     div
         [ h2 "Settings"

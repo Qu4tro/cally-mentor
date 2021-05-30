@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: "class",
   theme: {
     extend: {
       boxShadow: {
@@ -8,5 +9,5 @@ module.exports = {
 
   },
   variants: {},
-  plugins: []
+  plugins: [require("nightwind")]
 }

@@ -5,7 +5,7 @@ import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))
-import View.Common exposing (asText, plain, withClass)
+import View.Common exposing (plain, plainAsText, withClass)
 
 
 ol =
@@ -21,8 +21,7 @@ div =
 h2 =
     Html.h2
         |> withClass "font-sans font-thin text-3xl text-center mb-10"
-        |> plain
-        |> asText
+        |> plainAsText
 
 
 h3 =
@@ -34,8 +33,7 @@ h3 =
 p =
     Html.p
         |> withClass "ml-4 my-2"
-        |> plain
-        |> asText
+        |> plainAsText
 
 
 li =

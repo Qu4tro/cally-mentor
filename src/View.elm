@@ -1,6 +1,7 @@
 module View exposing (..)
 
 import Html exposing (Html)
+import Html.Attributes exposing (class)
 import Types exposing (Model, Msg, Page(..))
 import View.Common exposing (plain, withClass)
 import View.Footer
@@ -12,10 +13,15 @@ import View.Quiz.Options
 import View.Settings
 
 
+div =
+    Html.div
+        |> withClass "nightwind"
+
+
 main_ =
     Html.main_
         |> withClass "flex"
-        |> withClass "min-h-screen max-w-screen bg-gray-100"
+        |> withClass "min-h-screen max-w-screen bg-gray-100 text-black"
         |> plain
 
 
@@ -29,6 +35,13 @@ article =
 view : Model -> Html Msg
 view model =
     let
+        eternalChoiceClass =
+            if model.darkModeEnabled then
+                class "dark"
+
+            else
+                class "light"
+
         content =
             case model.page of
                 HomePage ->
@@ -55,7 +68,9 @@ view model =
                 GuidePage ->
                     [ View.Header.view model ]
     in
-    main_
-        [ View.Navbar.view model
-        , article content
+    div [ eternalChoiceClass ]
+        [ main_
+            [ View.Navbar.view model
+            , article content
+            ]
         ]

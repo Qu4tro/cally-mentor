@@ -72,3 +72,6 @@ update msg model =
 
                 _ ->
                     ( model, Cmd.none )
+
+        ToggleDarkMode ->
+            ( { model | darkModeEnabled = not model.darkModeEnabled }, Cmd.none )

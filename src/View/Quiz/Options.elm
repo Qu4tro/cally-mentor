@@ -52,7 +52,7 @@ view m =
                             class "bg-gray-700 hover:bg-yellow-500 "
             in
             button
-                [ PickOption weekday |> onClick, bgClass  ]
+                [ PickOption weekday |> onClick, bgClass ]
                 [ text weekdayName ]
     in
     span

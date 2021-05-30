@@ -10,7 +10,7 @@ import View.Common exposing (plain, withClass)
 
 
 sup =
-    Html.sup 
+    Html.sup
         |> plain
 
 
@@ -67,7 +67,7 @@ view model =
                 [ OneMoreDate |> onClick, class "border-green-500" ]
 
             else
-                [ OneMoreDate |> onClick]
+                [ OneMoreDate |> onClick ]
     in
     div []
         [ h2 [ text "What weekday does the given date fall on?" ]

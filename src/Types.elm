@@ -7,6 +7,7 @@ type alias Model =
     , gameMode : GameMode
     , yearRange : ( Year, Year )
     , hintsEnabled : Bool
+    , darkModeEnabled : Bool
     , page : Page
     , answerState : AnswerState
     }
@@ -21,6 +22,7 @@ type Msg
     | ChangePageTo Page
     | ChangeGameModeTo GameMode
     | PickOption Weekday
+    | ToggleDarkMode
 
 
 type alias Date =

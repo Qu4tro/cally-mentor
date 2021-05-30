@@ -8,5 +8,8 @@
     "normalize.css": "^8.0.1",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2"
+  },
+  "dependencies": {
+    "nightwind": "^1.1.11"
   }
 }

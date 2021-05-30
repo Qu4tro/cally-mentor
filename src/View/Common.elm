@@ -13,8 +13,9 @@ withClass :
 withClass className elem attrs elems =
     elem (class className :: attrs) elems
 
+
 withAttr :
-    (Attribute msg)
+    Attribute msg
     -> (List (Attribute msg) -> List (Html msg) -> Html msg)
     -> List (Attribute msg)
     -> List (Html msg)
@@ -22,9 +23,19 @@ withAttr :
 withAttr attr elem attrs elems =
     elem (attr :: attrs) elems
 
-asText : (List (Html msg) -> Html msg) -> String -> Html msg
-asText elem string =
-    elem [ text string ]
+
+asText :
+    (List (Attribute msg) -> List (Html msg) -> Html msg)
+    -> List (Attribute msg)
+    -> String
+    -> Html msg
+asText elem attrs string =
+    elem attrs [ text string ]
+
+
+plainAsText : (List (Attribute msg) -> List (Html msg) -> Html msg) -> String -> Html msg
+plainAsText elem string =
+    elem [] [ text string ]
 
 
 plain :
