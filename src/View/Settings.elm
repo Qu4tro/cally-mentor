@@ -3,7 +3,7 @@ module View.Settings exposing (..)
 import Domain.GameMode as GameMode
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class, type_, value)
-import Html.Events exposing (onInput, onClick)
+import Html.Events exposing (onClick, onInput)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))
 import View.Common exposing (asText, basic, plain, plainAsText, withClass)
 
@@ -68,6 +68,9 @@ input =
 view : Model -> Html Msg
 view model =
     let
+        enabledClass =
+            class "font-normal"
+
         yearRange =
             let
                 ( yMin, yMax ) =
@@ -94,36 +97,47 @@ view model =
             [ span
                 [ h3 "Hints enabled "
                 , h3 "― "
-                , h3 "Yes"
+                , (if model.hintsEnabled then
+                    u [ enabledClass ]
+
+                   else
+                    u [ ToggleHints |> onClick ]
+                  )
+                    "Yes"
                 , h3 " / "
-                , h3 "No"
+                , (if model.hintsEnabled then
+                    u [ ToggleHints |> onClick ]
+
+                   else
+                    u [ enabledClass ]
+                  )
+                    "No"
                 ]
             , p "A set of cheats and cheatsheets at a hover distance."
             ]
 
-        enabledClass = class "font-normal" 
         darkMode =
-            if model.darkModeEnabled then
-                [ span
-                    [ h3 "Dark mode enabled "
-                    , h3 "― "
-                    , u [ enabledClass ] "Yes"
-                    , h3 " / "
-                    , u [ ToggleDarkMode |> onClick ] "No"
-                    ]
-                , p "Spare your eyes."
+            [ span
+                [ h3 "Dark mode enabled "
+                , h3 "― "
+                , (if model.darkModeEnabled then
+                    u [ enabledClass ]
+
+                   else
+                    u [ ToggleDarkMode |> onClick ]
+                  )
+                    "Yes"
+                , h3 " / "
+                , (if model.darkModeEnabled then
+                    u [ ToggleDarkMode |> onClick ]
+
+                   else
+                    u [ enabledClass ]
+                  )
+                    "No"
                 ]
-            else
-                [ span
-                    [ h3 "Dark mode enabled "
-                    , h3 "― "
-                    , u [ ToggleDarkMode |> onClick ] "Yes"
-                    , h3 " / "
-                    , u [enabledClass ] "No"
-                    ]
-                , p "Spare your eyes."
-                ]
-            
+            , p "Spare your eyes."
+            ]
     in
     div
         [ h2 "Settings"

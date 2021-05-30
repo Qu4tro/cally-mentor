@@ -20,9 +20,10 @@ type Msg
     | ChangeMinYearTo Year
     | ChangeMaxYearTo Year
     | ChangePageTo Page
-    | ChangeGameModeTo GameMode
     | PickOption Weekday
+    | ChangeGameModeTo GameMode
     | ToggleDarkMode
+    | ToggleHints
 
 
 type alias Date =

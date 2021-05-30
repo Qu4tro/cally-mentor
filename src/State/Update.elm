@@ -46,14 +46,6 @@ update msg model =
         ChangePageTo newPage ->
             ( { model | page = newPage }, Cmd.none )
 
-        ChangeGameModeTo newGameMode ->
-            let
-                cmd =
-                    Random.generate NewDate
-                        (GameMode.dateGenerator newGameMode model.yearRange)
-            in
-            ( { model | gameMode = newGameMode }, cmd )
-
         PickOption weekday ->
             let
                 isCorrect =
@@ -73,5 +65,16 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
+        ChangeGameModeTo newGameMode ->
+            let
+                cmd =
+                    Random.generate NewDate
+                        (GameMode.dateGenerator newGameMode model.yearRange)
+            in
+            ( { model | gameMode = newGameMode }, cmd )
+
         ToggleDarkMode ->
             ( { model | darkModeEnabled = not model.darkModeEnabled }, Cmd.none )
+
+        ToggleHints ->
+            ( { model | hintsEnabled = not model.hintsEnabled }, Cmd.none )
