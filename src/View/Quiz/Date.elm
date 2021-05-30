@@ -10,11 +10,13 @@ import View.Common exposing (plain, withClass)
 
 
 sup =
-    Html.sup []
+    Html.sup 
+        |> plain
 
 
 span =
-    Html.span []
+    Html.span
+        |> plain
 
 
 h2 =
@@ -62,10 +64,10 @@ view model =
 
         buttonAttrs =
             if model.answerState /= Waiting then
-                [ onClick OneMoreDate, class "border-green-500" ]
+                [ OneMoreDate |> onClick, class "border-green-500" ]
 
             else
-                [ onClick OneMoreDate ]
+                [ OneMoreDate |> onClick]
     in
     div []
         [ h2 [ text "What weekday does the given date fall on?" ]

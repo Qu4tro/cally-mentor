@@ -13,6 +13,14 @@ withClass :
 withClass className elem attrs elems =
     elem (class className :: attrs) elems
 
+withAttr :
+    (Attribute msg)
+    -> (List (Attribute msg) -> List (Html msg) -> Html msg)
+    -> List (Attribute msg)
+    -> List (Html msg)
+    -> Html msg
+withAttr attr elem attrs elems =
+    elem (attr :: attrs) elems
 
 asText : (List (Html msg) -> Html msg) -> String -> Html msg
 asText elem string =
