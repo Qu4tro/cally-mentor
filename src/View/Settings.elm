@@ -94,47 +94,61 @@ view model =
             ]
 
         hints =
+            let
+                yes =
+                    (if model.hintsEnabled then
+                        u [ enabledClass ]
+
+                     else
+                        u [ ToggleHints |> onClick ]
+                    )
+                        "Yes"
+
+                no =
+                    (if model.hintsEnabled then
+                        u [ ToggleHints |> onClick ]
+
+                     else
+                        u [ enabledClass ]
+                    )
+                        "No"
+            in
             [ span
                 [ h3 "Hints enabled "
                 , h3 "― "
-                , (if model.hintsEnabled then
-                    u [ enabledClass ]
-
-                   else
-                    u [ ToggleHints |> onClick ]
-                  )
-                    "Yes"
+                , yes
                 , h3 " / "
-                , (if model.hintsEnabled then
-                    u [ ToggleHints |> onClick ]
-
-                   else
-                    u [ enabledClass ]
-                  )
-                    "No"
+                , no
                 ]
             , p "A set of cheats and cheatsheets at a hover distance."
             ]
 
         darkMode =
+            let
+                yes =
+                    (if model.darkModeEnabled then
+                        u [ enabledClass ]
+
+                     else
+                        u [ ToggleDarkMode |> onClick ]
+                    )
+                        "Yes"
+
+                no =
+                    (if model.darkModeEnabled then
+                        u [ ToggleDarkMode |> onClick ]
+
+                     else
+                        u [ enabledClass ]
+                    )
+                        "No"
+            in
             [ span
                 [ h3 "Dark mode enabled "
                 , h3 "― "
-                , (if model.darkModeEnabled then
-                    u [ enabledClass ]
-
-                   else
-                    u [ ToggleDarkMode |> onClick ]
-                  )
-                    "Yes"
+                , yes
                 , h3 " / "
-                , (if model.darkModeEnabled then
-                    u [ ToggleDarkMode |> onClick ]
-
-                   else
-                    u [ enabledClass ]
-                  )
-                    "No"
+                , no
                 ]
             , p "Spare your eyes."
             ]
