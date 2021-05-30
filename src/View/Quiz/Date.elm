@@ -27,26 +27,27 @@ h2 =
 
 ol =
     Html.ol
-        |> withClass "flex flex-wrap flex-row justify-center text-white"
+        |> withClass "flex flex-wrap flex-row justify-center"
+        |> withClass "text-white w-full m-2"
         |> plain
+
+
 
 
 li =
     Html.li
-        |> withClass "font-serif text-center text-lg xl:text-5xl"
-        |> withClass "pt-6 pb-4 px-14"
-        |> withClass "bg-gray-700 hover:bg-blue-500 shadow"
-        |> withClass "border-b-8 border-gray-800"
+        |> withClass "font-serif text-black text-center text-5xl"
+        |> withClass "px-4"
         |> plain
 
 
 button =
     Html.button
-        |> withClass "text-white text-center text-lg lg:text-3xl"
+        |> withClass "text-white text-center text-3xl"
         |> withClass "mx-2 rounded-sm shadow"
         |> withClass "cursor-pointer select-none clicked"
-        |> withClass "border-b-8 border-gray-800 "
-        |> withClass "bg-gray-700  hover:bg-green-500"
+        |> withClass "border-b-8 border-gray-800"
+        |> withClass "bg-gray-800  hover:bg-green-500"
 
 
 view : Model -> Html Msg
