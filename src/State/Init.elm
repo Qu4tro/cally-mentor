@@ -18,6 +18,7 @@ init =
             , weekday = Sunday
             , gameMode = TrainWeekdays
             , yearRange = ( 2000, 2025 )
+            , hintsEnabled = True
             , page = HomePage
             , answerState = Waiting
             }

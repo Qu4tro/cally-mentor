@@ -20,5 +20,4 @@ header =
 view : Model -> Html Msg
 view _ =
     header
-        [ h1 [ text "Weekday.Guru" ]
-        ]
+        [ h1 [ text "Weekday.Guru" ] ]

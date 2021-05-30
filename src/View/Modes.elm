@@ -5,7 +5,7 @@ import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))
-import View.Common exposing (plain, asText, withClass)
+import View.Common exposing (asText, plain, withClass)
 
 
 ol =
@@ -16,6 +16,7 @@ div =
     Html.div
         |> withClass "w-3/4"
         |> plain
+
 
 h2 =
     Html.h2
@@ -48,14 +49,9 @@ view model =
     let
         option mode =
             let
-                selectedGameModeClass =
-                    "font-normal"
-
                 attrs =
                     if mode == model.gameMode then
-                        [ class selectedGameModeClass
-                        , ChangeGameModeTo mode |> onClick
-                        ]
+                        [ ChangeGameModeTo mode |> onClick, class "font-normal" ]
 
                     else
                         [ ChangeGameModeTo mode |> onClick ]

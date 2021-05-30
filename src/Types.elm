@@ -6,6 +6,7 @@ type alias Model =
     , weekday : Weekday
     , gameMode : GameMode
     , yearRange : ( Year, Year )
+    , hintsEnabled : Bool
     , page : Page
     , answerState : AnswerState
     }
@@ -81,3 +82,17 @@ type AnswerState
     = Waiting
     | CorrectAnswer
     | WrongAnswer Weekday
+
+
+type HintVisibilityState
+    = Hidden
+    | VisibleOnHover
+    | Visible
+
+
+type alias HintVisibility =
+    { day : HintVisibilityState
+    , month : HintVisibilityState
+    , year : HintVisibilityState
+    , weekdays : HintVisibilityState
+    }

@@ -22,7 +22,7 @@ main_ =
 article =
     Html.article
         |> withClass "flex flex-col justify-start items-center"
-        |> withClass "w-3/6 mx-auto my-2"
+        |> withClass "w-5/6 md:w-4/6 lg:w-3/6 mx-auto my-2"
         |> plain
 
 

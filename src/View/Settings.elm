@@ -2,7 +2,7 @@ module View.Settings exposing (..)
 
 import Domain.GameMode as GameMode
 import Html exposing (Html, div, text)
-import Html.Attributes exposing (class, value, type_)
+import Html.Attributes exposing (class, type_, value)
 import Html.Events exposing (onInput)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))
 import View.Common exposing (asText, basic, plain, withClass)

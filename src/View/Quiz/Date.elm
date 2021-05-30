@@ -62,7 +62,7 @@ view model =
 
         buttonAttrs =
             if model.answerState /= Waiting then
-                [ class "border-green-500", onClick OneMoreDate ] 
+                [ onClick OneMoreDate, class "border-green-500" ]
 
             else
                 [ onClick OneMoreDate ]

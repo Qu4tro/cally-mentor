@@ -12,15 +12,18 @@ h4 =
     Html.h4
         |> withClass "font-sans font-thin text-xl cursor-pointer hover:underline"
 
+
 nav =
     Html.nav
         |> withClass "fixed top-24 h-full ml-10"
         |> plain
 
+
 span =
     Html.span
         |> withClass "h-4/6 flex flex-col justify-around"
         |> plain
+
 
 view : Model -> Html Msg
 view model =
