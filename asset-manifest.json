@@ -1,7 +1,7 @@
 {
   "main.css": "/weekday-guru/static/css/main.49586d3b.chunk.css",
-  "main.js": "/weekday-guru/static/js/main.7fc3f312.chunk.js",
-  "main.js.map": "/weekday-guru/static/js/main.7fc3f312.chunk.js.map",
+  "main.js": "/weekday-guru/static/js/main.e2b26976.chunk.js",
+  "main.js.map": "/weekday-guru/static/js/main.e2b26976.chunk.js.map",
   "runtime~main.js": "/weekday-guru/static/js/runtime~main.78eec5ed.js",
   "runtime~main.js.map": "/weekday-guru/static/js/runtime~main.78eec5ed.js.map",
   "vendors~main.js": "/weekday-guru/static/js/vendors~main.1a289f9b.chunk.js",
@@ -16,5 +16,5 @@
   "logo256.png": "/weekday-guru/logo256.png",
   "logo512.png": "/weekday-guru/logo512.png",
   "manifest.json": "/weekday-guru/manifest.json",
-  "precache-manifest.7bbc87e245b7c38d49df3a7218684267.js": "/weekday-guru/precache-manifest.7bbc87e245b7c38d49df3a7218684267.js"
+  "precache-manifest.345f8300191d3386ae215a52126e84f3.js": "/weekday-guru/precache-manifest.345f8300191d3386ae215a52126e84f3.js"
 }
