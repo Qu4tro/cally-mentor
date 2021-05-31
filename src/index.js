@@ -1,8 +1,6 @@
-import 'normalize.css';
 import './main.css';
 import { Elm } from './Main.elm';
 import * as serviceWorker from './serviceWorker';
-import nightwind from "nightwind/helper"
 
 Elm.Main.init({
   node: document.getElementById('root')
