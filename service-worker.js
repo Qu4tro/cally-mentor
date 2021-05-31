@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/weekday-guru/precache-manifest.1f905c6d3506a247043baa5cd5a9c51f.js"
+  "/weekday-guru/precache-manifest.c8dd858ab1a10b0ee983377229d8d12b.js"
 );
 
 workbox.core.skipWaiting();
