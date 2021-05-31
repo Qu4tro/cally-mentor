@@ -11,16 +11,20 @@ import View.Common exposing (plain, withClass)
 
 span =
     Html.span
-        |> withClass "flex flex-wrap justify-center"
         |> withClass "font-thin font-serif m-10"
+        |> withClass "flex flex-wrap justify-center"
+        |> withClass "flex-row w-3/4 h-2/5"
+        |> withClass "xl:flex-row xl:w-full"
         |> plain
 
 
 button =
     Html.button
-        |> withClass "rounded-sm shadow p-4 my-5 mx-10"
-        |> withClass "text-white text-2xl"
+        |> withClass "text-white text-2xl p-4"
+        |> withClass "rounded-sm shadow"
         |> withClass "cursor-pointer select-none clicked"
+        |> withClass "w-2/5 mx-4 h-20"
+        |> withClass "xl:w-1/5 xl:mx-10"
 
 
 view : Model -> Html Msg

@@ -4,51 +4,51 @@ import Html exposing (Attribute, Html, text)
 import Html.Attributes exposing (class)
 
 
-withClass :
-    String
-    -> (List (Attribute msg) -> List (Html msg) -> Html msg)
-    -> List (Attribute msg)
-    -> List (Html msg)
-    -> Html msg
-withClass className elem attrs elems =
-    elem (class className :: attrs) elems
+type alias Elem msg =
+    List (Attribute msg) -> List (Html msg) -> Html msg
 
 
-withAttr :
-    Attribute msg
-    -> (List (Attribute msg) -> List (Html msg) -> Html msg)
-    -> List (Attribute msg)
-    -> List (Html msg)
-    -> Html msg
+type alias TextElem msg =
+    List (Attribute msg) -> String -> Html msg
+
+
+type alias BasicElem msg =
+    List (Attribute msg) -> Html msg
+
+
+type alias PlainTextElem msg =
+    String -> Html msg
+
+
+type alias PlainElem msg =
+    List (Html msg) -> Html msg
+
+
+withAttr : Attribute msg -> Elem msg -> Elem msg
 withAttr attr elem attrs elems =
     elem (attr :: attrs) elems
 
 
-asText :
-    (List (Attribute msg) -> List (Html msg) -> Html msg)
-    -> List (Attribute msg)
-    -> String
-    -> Html msg
+withClass : String -> Elem msg -> Elem msg
+withClass className =
+    withAttr (class className)
+
+
+asText : Elem msg -> TextElem msg
 asText elem attrs string =
     elem attrs [ text string ]
 
 
-plainAsText : (List (Attribute msg) -> List (Html msg) -> Html msg) -> String -> Html msg
+plainAsText : Elem msg -> PlainTextElem msg
 plainAsText elem string =
     elem [] [ text string ]
 
 
-plain :
-    (List (Attribute msg) -> List (Html msg) -> Html msg)
-    -> List (Html msg)
-    -> Html msg
+plain : Elem msg -> PlainElem msg
 plain elem =
     elem []
 
 
-basic :
-    (List (Attribute msg) -> List (Html msg) -> Html msg)
-    -> List (Attribute msg)
-    -> Html msg
+basic : Elem msg -> BasicElem msg
 basic elem attrs =
     elem attrs []

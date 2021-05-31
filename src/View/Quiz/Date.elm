@@ -32,8 +32,6 @@ ol =
         |> plain
 
 
-
-
 li =
     Html.li
         |> withClass "font-serif text-black text-center text-5xl"
