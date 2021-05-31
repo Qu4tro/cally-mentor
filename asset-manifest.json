@@ -12,8 +12,9 @@
   "index.html": "/weekday-guru/index.html",
   "logo.svg": "/weekday-guru/logo.svg",
   "logo128.png": "/weekday-guru/logo128.png",
+  "logo192.png": "/weekday-guru/logo192.png",
   "logo256.png": "/weekday-guru/logo256.png",
   "logo512.png": "/weekday-guru/logo512.png",
   "manifest.json": "/weekday-guru/manifest.json",
-  "precache-manifest.b63dca86645261c671b55107097e1587.js": "/weekday-guru/precache-manifest.b63dca86645261c671b55107097e1587.js"
+  "precache-manifest.0664bf555ee0b48ccd01ccddd9fbf1f2.js": "/weekday-guru/precache-manifest.0664bf555ee0b48ccd01ccddd9fbf1f2.js"
 }
