@@ -1,7 +1,6 @@
 module View.Settings exposing (..)
 
-import Domain.GameMode as GameMode
-import Html exposing (Html, div, text)
+import Html exposing (Html, div)
 import Html.Attributes exposing (class, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))
