@@ -19,12 +19,10 @@
   },
   "lint-staged": {
     "*.elm": [
-      "yarn elm-format --yes",
-      "git add"
+      "yarn elm-format --yes"
     ],
     "*.js": [
-      "yarn prettier --write",
-      "git add"
+      "yarn prettier --write"
     ]
   }
 }
