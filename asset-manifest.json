@@ -10,7 +10,6 @@
   "./service-worker.js": "/./service-worker.js",
   "favicon.ico": "/favicon.ico",
   "index.html": "/index.html",
-  "logo.svg": "/logo.svg",
   "manifest.json": "/manifest.json",
-  "precache-manifest.fd11e9e4dc596e2b3203e2408cb41f62.js": "/precache-manifest.fd11e9e4dc596e2b3203e2408cb41f62.js"
+  "precache-manifest.9f17c5e80dd6d26d6a2aa9b08a5bdc98.js": "/precache-manifest.9f17c5e80dd6d26d6a2aa9b08a5bdc98.js"
 }

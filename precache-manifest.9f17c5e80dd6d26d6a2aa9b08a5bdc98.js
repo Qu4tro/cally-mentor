@@ -4,15 +4,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/favicon.ico"
   },
   {
-    "revision": "dee342dd09b0d92d000ade3f3b229acd",
+    "revision": "4cb2ea139ac4b8909eebf35ac44e08e5",
     "url": "/index.html"
   },
   {
-    "revision": "6ead519905b7b907c00965be37dd5cd7",
-    "url": "/logo.svg"
-  },
-  {
-    "revision": "1c82903c2994c2507b385b9042bbfac5",
+    "revision": "dbf108c57a31f898ba0734f40bd560c4",
     "url": "/manifest.json"
   },
   {
