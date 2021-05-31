@@ -14,15 +14,16 @@
     "tailwindcss": "^2.1.2"
   },
   "scripts": {
-    "postinstall": "husky install",
-    "precommit": "lint-staged"
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "*.elm": [
-      "yarn elm-format --yes"
+      "yarn elm-format --yes",
+      "git add"
     ],
     "*.js": [
-      "yarn prettier --write"
+      "yarn prettier --write",
+      "git add"
     ]
   }
 }
