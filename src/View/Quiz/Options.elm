@@ -29,7 +29,7 @@ button =
 
 aside =
     Html.aside
-        |> withClass "text-base opacity-50"
+        |> withClass "text-base opacity-60"
         |> plainAsText
 
 
