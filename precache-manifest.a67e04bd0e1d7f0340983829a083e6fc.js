@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/weekday-guru/logo512.png"
   },
   {
-    "revision": "7e38bc3ff7e254fd341bde732b0619b9",
+    "revision": "515a9f06793e4e3bcd7663aa9126276d",
     "url": "/weekday-guru/manifest.json"
   },
   {
