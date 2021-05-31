@@ -17,3 +17,4 @@ tasks:
 vscode:
   extensions:
     - elmtooling.elm-ls-vscode
+    - bradlc.vscode-tailwindcss
