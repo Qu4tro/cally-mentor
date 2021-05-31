@@ -33,7 +33,7 @@ initHintVisibilityState =
 initGuideCmd : Cmd Msg
 initGuideCmd =
     Http.get
-        { url = "/guide.md"
+        { url = "%PUBLIC_URL%/guide.md"
         , expect = Http.expectString GotGuide
         }
 
