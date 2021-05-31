@@ -67,7 +67,7 @@ view m =
 
                 GuidePage ->
                     [ View.Header.view m
-                    , m.guide 
+                    , m.guide
                     ]
     in
     div [ eternalChoiceClass ]
