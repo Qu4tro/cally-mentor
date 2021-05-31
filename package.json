@@ -6,8 +6,24 @@
     "elm-format": "^0.8.5",
     "elm-review": "^2.5.1",
     "elm-test": "^0.19.1-revision7",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "nightwind": "^1.1.11",
     "postcss": "^8.3.0",
+    "prettier": "^2.3.0",
     "tailwindcss": "^2.1.2"
-    }
+  },
+  "scripts": {
+    "postinstall": "husky install"
+  },
+  "lint-staged": {
+    "*.elm": [
+      "yarn elm-format --yes",
+      "git add"
+    ],
+    "*.js": [
+      "yarn prettier --write",
+      "git add"
+    ]
+  }
 }
