@@ -1,6 +1,6 @@
 module View.Settings exposing (..)
 
-import Html exposing (Html, div)
+import Html exposing (Html)
 import Html.Attributes exposing (class, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Types exposing (GameMode(..), Model, Msg(..), Page(..))

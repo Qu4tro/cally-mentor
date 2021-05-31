@@ -1,6 +1,6 @@
 module View.Footer exposing (..)
 
-import Html exposing (Html, b, text)
+import Html exposing (Html, text)
 import Types exposing (Model, Msg)
 import View.Common exposing (plain, plainAsText, withClass)
 
