@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/weekday-guru/guide.md"
   },
   {
-    "revision": "b6cf4e6e0530ec5119b4e3ef267ca3ab",
+    "revision": "f354c27f841628181e617f12be83937a",
     "url": "/weekday-guru/index.html"
   },
   {
