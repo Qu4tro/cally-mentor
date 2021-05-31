@@ -3,6 +3,7 @@ module State.Update exposing (..)
 import Domain.GameMode as GameMode
 import Domain.Weekday as Weekday
 import Random
+import State.Init exposing (initHintVisibilityState)
 import Types exposing (..)
 
 
@@ -16,7 +17,7 @@ update msg model =
             let
                 cmd =
                     Random.generate NewDate
-                        (GameMode.dateGenerator model.gameMode model.yearRange)
+                        (GameMode.dateGenerator model.gameMode model.settings.yearRange)
             in
             ( model, cmd )
 
@@ -25,6 +26,7 @@ update msg model =
                 | date = newDate
                 , weekday = Weekday.fromDate newDate
                 , answerState = Waiting
+                , hintVisibilityState = initHintVisibilityState
               }
             , Cmd.none
             )
@@ -32,16 +34,28 @@ update msg model =
         ChangeMinYearTo year ->
             let
                 yearRange =
-                    ( year, Tuple.second model.yearRange )
+                    ( year, Tuple.second model.settings.yearRange )
+
+                oldSettings =
+                    model.settings
+
+                newSettings =
+                    { oldSettings | yearRange = yearRange }
             in
-            ( { model | yearRange = yearRange }, Cmd.none )
+            ( { model | settings = newSettings }, Cmd.none )
 
         ChangeMaxYearTo year ->
             let
                 yearRange =
-                    ( Tuple.first model.yearRange, year )
+                    ( Tuple.first model.settings.yearRange, year )
+
+                oldSettings =
+                    model.settings
+
+                newSettings =
+                    { oldSettings | yearRange = yearRange }
             in
-            ( { model | yearRange = yearRange }, Cmd.none )
+            ( { model | settings = newSettings }, Cmd.none )
 
         ChangePageTo newPage ->
             ( { model | page = newPage }, Cmd.none )
@@ -69,18 +83,67 @@ update msg model =
             let
                 cmd =
                     Random.generate NewDate
-                        (GameMode.dateGenerator newGameMode model.yearRange)
+                        (GameMode.dateGenerator newGameMode model.settings.yearRange)
             in
             ( { model | gameMode = newGameMode }, cmd )
 
         ToggleDarkMode ->
-            ( { model | darkModeEnabled = not model.darkModeEnabled }, Cmd.none )
+            let
+                oldSettings =
+                    model.settings
 
-        ToggleHints ->
-            ( { model | hintsEnabled = not model.hintsEnabled }, Cmd.none )
+                newSettings =
+                    { oldSettings | darkModeEnabled = not oldSettings.darkModeEnabled }
+            in
+            ( { model | settings = newSettings }, Cmd.none )
 
         ToggleSundayFirst ->
-            ( { model | sundayFirst = not model.sundayFirst }, Cmd.none )
+            let
+                oldSettings =
+                    model.settings
+
+                newSettings =
+                    { oldSettings | sundayFirst = not oldSettings.sundayFirst }
+            in
+            ( { model | settings = newSettings }, Cmd.none )
 
         ToggleWeekdayHints ->
-            ( { model | weekdayHintsEnabled = not model.weekdayHintsEnabled }, Cmd.none )
+            let
+                oldSettings =
+                    model.settings
+
+                newSettings =
+                    { oldSettings | weekdayHintsEnabled = not oldSettings.weekdayHintsEnabled }
+            in
+            ( { model | settings = newSettings }, Cmd.none )
+
+        ToggleDateHints ->
+            let
+                oldSettings =
+                    model.settings
+
+                newSettings =
+                    { oldSettings | dateHintsEnabled = not oldSettings.dateHintsEnabled }
+            in
+            ( { model | settings = newSettings }, Cmd.none )
+
+        ShowDateHint datePart ->
+            let
+                oldHintVisibilityState =
+                    model.hintVisibilityState
+
+                newHintVisibilityState =
+                    case datePart of
+                        "day" ->
+                            { oldHintVisibilityState | dayVisible = True }
+
+                        "month" ->
+                            { oldHintVisibilityState | monthVisible = True }
+
+                        "year" ->
+                            { oldHintVisibilityState | yearVisible = True }
+
+                        _ ->
+                            oldHintVisibilityState
+            in
+            ( { model | hintVisibilityState = newHintVisibilityState }, Cmd.none )

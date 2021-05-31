@@ -5,13 +5,21 @@ type alias Model =
     { date : Date
     , weekday : Weekday
     , gameMode : GameMode
-    , darkModeEnabled : Bool
-    , sundayFirst : Bool
-    , weekdayHintsEnabled : Bool
-    , hintsEnabled : Bool
-    , yearRange : ( Year, Year )
+    , settings : Settings
     , page : Page
     , answerState : AnswerState
+    , hintVisibilityState : HintVisibilityState
+    }
+
+
+type alias Settings =
+    { darkModeEnabled : Bool
+    , sundayFirst : Bool
+    , weekdayHintsEnabled : Bool
+    , dateHintsEnabled : Bool
+
+    --   , hintsEnabled : Bool
+    , yearRange : ( Year, Year )
     }
 
 
@@ -27,7 +35,8 @@ type Msg
     | ToggleDarkMode
     | ToggleSundayFirst
     | ToggleWeekdayHints
-    | ToggleHints
+    | ToggleDateHints
+    | ShowDateHint String
 
 
 type alias Date =
@@ -91,15 +100,8 @@ type AnswerState
     | WrongAnswer Weekday
 
 
-type HintVisibilityState
-    = Hidden
-    | VisibleOnHover
-    | Visible
-
-
-type alias HintVisibility =
-    { day : HintVisibilityState
-    , month : HintVisibilityState
-    , year : HintVisibilityState
-    , weekdays : HintVisibilityState
+type alias HintVisibilityState =
+    { dayVisible : Bool
+    , monthVisible : Bool
+    , yearVisible : Bool
     }

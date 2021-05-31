@@ -33,44 +33,44 @@ article =
 
 
 view : Model -> Html Msg
-view model =
+view m =
     let
         eternalChoiceClass =
-            if model.darkModeEnabled then
+            if m.settings.darkModeEnabled then
                 class "dark"
 
             else
                 class "light"
 
         content =
-            case model.page of
+            case m.page of
                 HomePage ->
-                    [ View.Header.view model
-                    , View.Quiz.Date.view model
-                    , View.Quiz.Options.view model
-                    , View.Footer.view model
+                    [ View.Header.view m
+                    , View.Quiz.Date.view m
+                    , View.Quiz.Options.view m
+                    , View.Footer.view m
                     ]
 
                 AboutPage ->
-                    [ View.Header.view model ]
+                    [ View.Header.view m ]
 
                 SettingsPage ->
-                    [ View.Header.view model
-                    , View.Settings.view model
-                    , View.Footer.view model
+                    [ View.Header.view m
+                    , View.Settings.view m
+                    , View.Footer.view m
                     ]
 
                 GameModesPage ->
-                    [ View.Header.view model
-                    , View.Modes.view model
+                    [ View.Header.view m
+                    , View.Modes.view m
                     ]
 
                 GuidePage ->
-                    [ View.Header.view model ]
+                    [ View.Header.view m ]
     in
     div [ eternalChoiceClass ]
         [ main_
-            [ View.Navbar.view model
+            [ View.Navbar.view m
             , article content
             ]
         ]

@@ -1,12 +1,13 @@
 module View.Quiz.Date exposing (..)
 
+import Domain.Calc as Calc
 import Domain.Day as Day
 import Domain.Month as Month
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..))
-import View.Common exposing (plain, withClass)
+import View.Common exposing (plain, plainAsText, withClass)
 
 
 sup =
@@ -36,7 +37,6 @@ li =
     Html.li
         |> withClass "font-serif text-black text-center text-5xl"
         |> withClass "px-4"
-        |> plain
 
 
 button =
@@ -48,21 +48,66 @@ button =
         |> withClass "bg-gray-800  hover:bg-green-500"
 
 
+aside =
+    Html.aside
+        |> withClass "text-base opacity-30"
+        |> plainAsText
+
+
 view : Model -> Html Msg
-view model =
+view m =
     let
         ( dayString, suffix ) =
-            Day.ordinal model.date.day
+            Day.ordinal m.date.day
 
         viewDate =
+            let
+                viewDatePart name visible content =
+                    li
+                        (if m.settings.dateHintsEnabled then
+                            [ class "cursor-pointer", ShowDateHint name |> onClick ]
+
+                         else
+                            []
+                        )
+                        (if visible then
+                            [ content
+                            , aside
+                                (case name of
+                                    "day" ->
+                                        Calc.dayCode m.date |> String.fromInt
+
+                                    "month" ->
+                                        Calc.monthCode m.date |> String.fromInt
+
+                                    "year" ->
+                                        (Calc.centuryCode m.date |> String.fromInt)
+                                            ++ " + "
+                                            ++ (Calc.yearCode m.date |> String.fromInt)
+
+                                    _ ->
+                                        ""
+                                )
+                            ]
+
+                         else
+                            [ content ]
+                        )
+            in
             ol
-                [ li [ text (String.fromInt model.date.year) ]
-                , li [ text (Month.toString model.date.month) ]
-                , li [ span [ text dayString, sup [ text suffix ] ] ]
+                [ viewDatePart "year"
+                    m.hintVisibilityState.yearVisible
+                    (text (String.fromInt m.date.year))
+                , viewDatePart "month"
+                    m.hintVisibilityState.monthVisible
+                    (text (Month.toString m.date.month))
+                , viewDatePart "day"
+                    m.hintVisibilityState.dayVisible
+                    (span [ text dayString, sup [ text suffix ] ])
                 ]
 
         buttonAttrs =
-            if model.answerState /= Waiting then
+            if m.answerState /= Waiting then
                 [ OneMoreDate |> onClick, class "border-green-500" ]
 
             else

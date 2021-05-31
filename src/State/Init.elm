@@ -10,6 +10,24 @@ initDate =
     { day = 1, month = January, year = 3000 }
 
 
+initSettings : Settings
+initSettings =
+    { darkModeEnabled = True
+    , sundayFirst = False
+    , weekdayHintsEnabled = True
+    , yearRange = ( 2000, 2025 )
+    , dateHintsEnabled = True
+    }
+
+
+initHintVisibilityState : HintVisibilityState
+initHintVisibilityState =
+    { dayVisible = False
+    , monthVisible = False
+    , yearVisible = False
+    }
+
+
 init : ( Model, Cmd Msg )
 init =
     let
@@ -17,17 +35,14 @@ init =
             { date = initDate
             , weekday = Sunday
             , gameMode = TrainWeekdays
-            , darkModeEnabled = True
-            , sundayFirst = False
-            , weekdayHintsEnabled = True
-            , yearRange = ( 2000, 2025 )
-            , hintsEnabled = True
             , page = HomePage
             , answerState = Waiting
+            , hintVisibilityState = initHintVisibilityState
+            , settings = initSettings
             }
 
         commands =
-            [ Random.generate NewDate (Domain.DateGeneration.random model.yearRange)
+            [ Random.generate NewDate (Domain.DateGeneration.random model.settings.yearRange)
             ]
     in
     ( model

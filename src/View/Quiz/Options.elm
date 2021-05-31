@@ -23,7 +23,7 @@ button =
         |> withClass "text-white text-2xl p-4"
         |> withClass "rounded-sm shadow"
         |> withClass "cursor-pointer select-none clicked"
-        |> withClass "w-2/5 mx-4 h-20"
+        |> withClass "w-2/5 m-4 h-20"
         |> withClass "xl:w-1/5 xl:mx-10"
 
 
@@ -63,14 +63,14 @@ view m =
             in
             button
                 [ PickOption weekday |> onClick, bgClass ]
-                (if m.weekdayHintsEnabled then
+                (if m.settings.weekdayHintsEnabled then
                     [ text weekdayName, aside (Weekday.hint weekday) ]
 
                  else
                     [ text weekdayName ]
                 )
     in
-    if m.sundayFirst then
+    if m.settings.sundayFirst then
         span
             [ option Sunday
             , option Monday

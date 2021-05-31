@@ -66,7 +66,7 @@ input =
 
 
 view : Model -> Html Msg
-view model =
+view m =
     let
         yesNo enabled toggleMsg =
             let
@@ -98,29 +98,29 @@ view model =
             ]
 
         darkMode =
-            [ span (h3 "Dark mode enabled" :: yesNo model.darkModeEnabled ToggleDarkMode)
+            [ span (h3 "Dark mode enabled" :: yesNo m.settings.darkModeEnabled ToggleDarkMode)
             , p "Spare your eyes."
             ]
 
         sunday =
-            [ span (h3 "Sunday is the first day of the week" :: yesNo model.sundayFirst ToggleSundayFirst)
+            [ span (h3 "Sunday is the first day of the week" :: yesNo m.settings.sundayFirst ToggleSundayFirst)
             , p "Reorder the weekdays according to your preference."
             ]
 
         hintWeekdays =
-            [ span (h3 "Weekday hints enabled" :: yesNo model.weekdayHintsEnabled ToggleWeekdayHints)
+            [ span (h3 "Weekday hints enabled" :: yesNo m.settings.weekdayHintsEnabled ToggleWeekdayHints)
             , p "Annotate on each weekday the corresponding code. Recommended for beginners."
             ]
 
         hints =
-            [ span (h3 "Hints enabled" :: yesNo model.hintsEnabled ToggleHints)
-            , p "A set of cheats and cheatsheets at a hover distance."
+            [ span (h3 "Date hints enabled" :: yesNo m.settings.dateHintsEnabled ToggleDateHints)
+            , p "Click on a date component to get its corresponding code. Recommended for beginners."
             ]
 
         yearRange =
             let
                 ( yMin, yMax ) =
-                    model.yearRange
+                    m.settings.yearRange
 
                 yearInput yValue msg =
                     input
