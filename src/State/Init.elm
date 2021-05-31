@@ -15,18 +15,18 @@ initDate =
 initSettings : Settings
 initSettings =
     { darkModeEnabled = True
-    , sundayFirst = True
-    , weekdayHintsEnabled = True
+    , sundayFirst = False
+    , weekdayHintsEnabled = False
     , yearRange = ( 2000, 2025 )
-    , dateHintsEnabled = True
+    , dateHintsEnabled = False
     }
 
 
 initHintVisibilityState : HintVisibilityState
 initHintVisibilityState =
-    { dayVisible = True
-    , monthVisible = True
-    , yearVisible = True
+    { dayVisible = False
+    , monthVisible = False
+    , yearVisible = False
     }
 
 
