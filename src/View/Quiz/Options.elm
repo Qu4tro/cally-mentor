@@ -5,7 +5,7 @@ import Domain.Weekday as Weekday
 import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import Types exposing (AnswerState(..), Model, Msg(..), Weekday(..))
+import Types exposing (AnswerState(..), GameMode(..), Model, Msg(..), Weekday(..))
 import View.Common exposing (plain, plainAsText, withClass)
 
 
@@ -63,7 +63,7 @@ view m =
             in
             button
                 [ PickOption weekday |> onClick, bgClass ]
-                (if m.settings.weekdayHintsEnabled then
+                (if m.settings.weekdayHintsEnabled || m.gameMode == TrainSevens then
                     [ text weekdayName, aside (Weekday.hint weekday) ]
 
                  else

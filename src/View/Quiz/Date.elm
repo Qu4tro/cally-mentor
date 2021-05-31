@@ -6,7 +6,7 @@ import Domain.Month as Month
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
-import Types exposing (AnswerState(..), Model, Msg(..))
+import Types exposing (AnswerState(..), GameMode(..), Model, Msg(..))
 import View.Common exposing (plain, plainAsText, withClass)
 
 
@@ -70,7 +70,14 @@ view m =
                          else
                             []
                         )
-                        (if visible then
+                        (if
+                            visible
+                                || (m.gameMode == TrainSevens)
+                                || (name == "day" && m.gameMode == TrainMonths)
+                                || (name == "year" && m.gameMode == TrainMonths)
+                                || (name == "day" && m.gameMode == TrainYears)
+                                || (name == "month" && m.gameMode == TrainYears)
+                         then
                             [ content
                             , aside
                                 (case name of
@@ -81,7 +88,7 @@ view m =
                                         Calc.monthCode m.date |> String.fromInt
 
                                     "year" ->
-                                        (Calc.centuryCode m.date |> String.fromInt)
+                                        (Calc.centuryCode m.date |> Calc.dropSevens |> String.fromInt)
                                             ++ " + "
                                             ++ (Calc.yearCode m.date |> String.fromInt)
 
