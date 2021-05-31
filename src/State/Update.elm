@@ -4,7 +4,7 @@ import Domain.Weekday as Weekday
 import Html exposing (text)
 import Html.Attributes exposing (class)
 import Markdown
-import State.Init exposing (initGuideCmd, initHintVisibilityState, initRandomDate)
+import State.Init exposing (initHintVisibilityState, initRandomDate)
 import Types exposing (..)
 
 
