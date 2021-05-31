@@ -1,4 +1,8 @@
 module.exports = {
+  purge: [
+    './src/**/*.html',
+    './src/**/*.elm',
+  ],
   darkMode: "class",
   theme: {
     extend: {
