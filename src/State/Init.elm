@@ -1,6 +1,8 @@
 module State.Init exposing (..)
 
-import Domain.DateGeneration
+import Domain.GameMode as GameMode
+import Html exposing (div)
+import Http
 import Random
 import Types exposing (..)
 
@@ -28,21 +30,38 @@ initHintVisibilityState =
     }
 
 
+initGuideCmd : Cmd Msg
+initGuideCmd =
+    Http.get
+        { url = "/guide.md"
+        , expect = Http.expectString GotGuide
+        }
+
+
+initRandomDate : Model -> Cmd Msg
+initRandomDate model =
+    Random.generate
+        NewDate
+        (GameMode.dateGenerator model.gameMode model.settings.yearRange)
+
+
 init : ( Model, Cmd Msg )
 init =
     let
         model =
-            { date = initDate
+            { page = HomePage
+            , date = initDate
             , weekday = Sunday
+            , guide = div [] []
             , gameMode = TrainWeekdays
-            , page = HomePage
             , answerState = Waiting
             , hintVisibilityState = initHintVisibilityState
             , settings = initSettings
             }
 
         commands =
-            [ Random.generate NewDate (Domain.DateGeneration.random model.settings.yearRange)
+            [ initRandomDate model
+            , initGuideCmd
             ]
     in
     ( model

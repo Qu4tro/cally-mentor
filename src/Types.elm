@@ -1,12 +1,16 @@
 module Types exposing (..)
 
+import Html exposing (Html)
+import Http
+
 
 type alias Model =
-    { date : Date
+    { page : Page
+    , date : Date
     , weekday : Weekday
+    , guide : Html Msg
     , gameMode : GameMode
     , settings : Settings
-    , page : Page
     , answerState : AnswerState
     , hintVisibilityState : HintVisibilityState
     }
@@ -17,8 +21,6 @@ type alias Settings =
     , sundayFirst : Bool
     , weekdayHintsEnabled : Bool
     , dateHintsEnabled : Bool
-
-    --   , hintsEnabled : Bool
     , yearRange : ( Year, Year )
     }
 
@@ -37,6 +39,8 @@ type Msg
     | ToggleWeekdayHints
     | ToggleDateHints
     | ShowDateHint String
+    | GetGuide
+    | GotGuide (Result Http.Error String)
 
 
 type alias Date =

@@ -1,9 +1,10 @@
 module State.Update exposing (..)
 
-import Domain.GameMode as GameMode
 import Domain.Weekday as Weekday
-import Random
-import State.Init exposing (initHintVisibilityState)
+import Html exposing (text)
+import Html.Attributes exposing (class)
+import Markdown
+import State.Init exposing (initGuideCmd, initHintVisibilityState, initRandomDate)
 import Types exposing (..)
 
 
@@ -14,12 +15,7 @@ update msg model =
             ( model, Cmd.none )
 
         OneMoreDate ->
-            let
-                cmd =
-                    Random.generate NewDate
-                        (GameMode.dateGenerator model.gameMode model.settings.yearRange)
-            in
-            ( model, cmd )
+            ( model, initRandomDate model )
 
         NewDate newDate ->
             ( { model
@@ -80,12 +76,7 @@ update msg model =
                     ( model, Cmd.none )
 
         ChangeGameModeTo newGameMode ->
-            let
-                cmd =
-                    Random.generate NewDate
-                        (GameMode.dateGenerator newGameMode model.settings.yearRange)
-            in
-            ( { model | gameMode = newGameMode }, cmd )
+            ( { model | gameMode = newGameMode }, Cmd.none )
 
         ToggleDarkMode ->
             let
@@ -147,3 +138,28 @@ update msg model =
                             oldHintVisibilityState
             in
             ( { model | hintVisibilityState = newHintVisibilityState }, Cmd.none )
+
+        GetGuide ->
+            ( model, initGuideCmd )
+
+        GotGuide markdownResult ->
+            let
+                markdownRenderOptions =
+                    { githubFlavored = Just { tables = True, breaks = True }
+                    , defaultHighlighting = Nothing
+                    , sanitize = True
+                    , smartypants = False
+                    }
+
+                renderedGuide =
+                    case markdownResult of
+                        Ok markdown ->
+                            markdown
+                                |> Markdown.toHtmlWith
+                                    markdownRenderOptions
+                                    [ class "guide" ]
+
+                        Err _ ->
+                            text ""
+            in
+            ( { model | guide = renderedGuide }, Cmd.none )

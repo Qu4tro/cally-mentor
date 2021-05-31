@@ -9,4 +9,44 @@
   .clicked:active {
     @apply relative top-px shadow-none;
   }
+
+  .guide {
+    @apply font-sans leading-8 text-lg mb-10;
+  }
+
+  .guide > h1 {
+    @apply text-3xl text-center font-thin mb-4;
+  }
+
+  .guide > h2 {
+    @apply text-2xl text-center font-thin m-4;
+  }
+
+  .guide > pre {
+    @apply ml-4 px-4 font-mono bg-black bg-opacity-20;
+  }
+
+  .guide > p > code {
+    @apply font-mono bg-black bg-opacity-20;
+  }
+
+  .guide > ul {
+    @apply m-10 font-mono text-base bg-black bg-opacity-20 p-2;
+  }
+
+  .guide > ul > li {
+    @apply p-4;
+  }
+
+  .guide > table {
+    @apply m-auto my-8;
+  }
+
+  .guide > table > * > tr > * {
+    @apply px-4;
+  }
+
+  .guide > table td + td {
+    @apply text-right;
+  }
 }
