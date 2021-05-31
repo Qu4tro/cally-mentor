@@ -39,14 +39,13 @@ type Msg
     | ToggleWeekdayHints
     | ToggleDateHints
     | ShowDateHint String
-    | GetGuide
     | GotGuide (Result Http.Error String)
 
 
 type alias Date =
-    { day : Int
+    { day : Day
     , month : Month
-    , year : Int
+    , year : Year
     }
 
 

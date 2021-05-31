@@ -1,14 +1,16 @@
 module View.Header exposing (..)
 
-import Html exposing (Html, text)
-import Types exposing (Model, Msg)
-import View.Common exposing (plain, withClass)
+import Html exposing (Html)
+import Html.Events exposing (onClick)
+import Types exposing (Model, Msg(..))
+import View.Common exposing (plain, plainAsText, withAttr, withClass)
 
 
 h1 =
     Html.h1
         |> withClass "font-sans font-thin text-5xl text-center my-14"
-        |> plain
+        |> withAttr (onClick NoOp)
+        |> plainAsText
 
 
 header =
@@ -20,4 +22,4 @@ header =
 view : Model -> Html Msg
 view _ =
     header
-        [ h1 [ text "Weekday.Guru" ] ]
+        [ h1 "Weekday.Guru" ]

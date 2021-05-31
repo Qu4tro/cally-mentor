@@ -139,9 +139,6 @@ update msg model =
             in
             ( { model | hintVisibilityState = newHintVisibilityState }, Cmd.none )
 
-        GetGuide ->
-            ( model, initGuideCmd )
-
         GotGuide markdownResult ->
             let
                 markdownRenderOptions =
