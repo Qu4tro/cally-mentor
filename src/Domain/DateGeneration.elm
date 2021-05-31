@@ -2,6 +2,7 @@ module Domain.DateGeneration exposing (..)
 
 import Domain.Calc as Calc
 import Domain.Date exposing (mkDate)
+import Domain.Day as Day
 import Domain.Month as Month
 import Domain.Year as Year
 import Random
@@ -55,8 +56,8 @@ unknownYearGenerator yearRange =
         unknownYearGeneratorGivenMonth : Int -> Month -> Random.Generator Date
         unknownYearGeneratorGivenMonth year month =
             let
-                daysOnTheSameWeekday firstWeekdayDay =
-                    []
+                daysOnTheSameWeekday =
+                    Day.daysOnTheSameWeekday year month
 
                 dayGenerator =
                     let
@@ -92,8 +93,8 @@ unknownMonthGenerator yearRange =
         unknownMonthGeneratorGivenYear : Int -> Month -> Random.Generator Date
         unknownMonthGeneratorGivenYear year month =
             let
-                daysOnTheSameWeekday firstWeekdayDay =
-                    []
+                daysOnTheSameWeekday =
+                    Day.daysOnTheSameWeekday year month
 
                 dayGenerator =
                     let
