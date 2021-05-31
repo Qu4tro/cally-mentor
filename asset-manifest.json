@@ -10,6 +10,10 @@
   "favicon.ico": "/weekday-guru/favicon.ico",
   "guide.md": "/weekday-guru/guide.md",
   "index.html": "/weekday-guru/index.html",
+  "logo.svg": "/weekday-guru/logo.svg",
+  "logo128.png": "/weekday-guru/logo128.png",
+  "logo256.png": "/weekday-guru/logo256.png",
+  "logo512.png": "/weekday-guru/logo512.png",
   "manifest.json": "/weekday-guru/manifest.json",
-  "precache-manifest.9d9a1c14a81fc9908ce4f34d6522df21.js": "/weekday-guru/precache-manifest.9d9a1c14a81fc9908ce4f34d6522df21.js"
+  "precache-manifest.1f905c6d3506a247043baa5cd5a9c51f.js": "/weekday-guru/precache-manifest.1f905c6d3506a247043baa5cd5a9c51f.js"
 }
