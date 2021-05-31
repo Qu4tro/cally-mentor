@@ -68,8 +68,54 @@ input =
 view : Model -> Html Msg
 view model =
     let
-        enabledClass =
-            class "font-normal"
+        yesNo enabled toggleMsg =
+            let
+                enabledClass =
+                    class "font-normal"
+
+                yes =
+                    (if enabled then
+                        u [ enabledClass ]
+
+                     else
+                        u [ toggleMsg |> onClick ]
+                    )
+                        "Yes"
+
+                no =
+                    (if not enabled then
+                        u [ enabledClass ]
+
+                     else
+                        u [ toggleMsg |> onClick ]
+                    )
+                        "No"
+            in
+            [ h3 "― "
+            , yes
+            , h3 " / "
+            , no
+            ]
+
+        darkMode =
+            [ span (h3 "Dark mode enabled" :: yesNo model.darkModeEnabled ToggleDarkMode)
+            , p "Spare your eyes."
+            ]
+
+        sunday =
+            [ span (h3 "Sunday is the first day of the week" :: yesNo model.sundayFirst ToggleSundayFirst)
+            , p "Reorder the weekdays according to your preference."
+            ]
+
+        hintWeekdays =
+            [ span (h3 "Weekday hints enabled" :: yesNo model.weekdayHintsEnabled ToggleWeekdayHints)
+            , p "Annotate on each weekday the corresponding code. Recommended for beginners."
+            ]
+
+        hints =
+            [ span (h3 "Hints enabled" :: yesNo model.hintsEnabled ToggleHints)
+            , p "A set of cheats and cheatsheets at a hover distance."
+            ]
 
         yearRange =
             let
@@ -92,72 +138,14 @@ view model =
                 ]
             , p "Applies to all game modes."
             ]
-
-        hints =
-            let
-                yes =
-                    (if model.hintsEnabled then
-                        u [ enabledClass ]
-
-                     else
-                        u [ ToggleHints |> onClick ]
-                    )
-                        "Yes"
-
-                no =
-                    (if model.hintsEnabled then
-                        u [ ToggleHints |> onClick ]
-
-                     else
-                        u [ enabledClass ]
-                    )
-                        "No"
-            in
-            [ span
-                [ h3 "Hints enabled "
-                , h3 "― "
-                , yes
-                , h3 " / "
-                , no
-                ]
-            , p "A set of cheats and cheatsheets at a hover distance."
-            ]
-
-        darkMode =
-            let
-                yes =
-                    (if model.darkModeEnabled then
-                        u [ enabledClass ]
-
-                     else
-                        u [ ToggleDarkMode |> onClick ]
-                    )
-                        "Yes"
-
-                no =
-                    (if model.darkModeEnabled then
-                        u [ ToggleDarkMode |> onClick ]
-
-                     else
-                        u [ enabledClass ]
-                    )
-                        "No"
-            in
-            [ span
-                [ h3 "Dark mode enabled "
-                , h3 "― "
-                , yes
-                , h3 " / "
-                , no
-                ]
-            , p "Spare your eyes."
-            ]
     in
     div
         [ h2 "Settings"
         , ol
-            [ li yearRange
+            [ li darkMode
+            , li sunday
+            , li hintWeekdays
             , li hints
-            , li darkMode
+            , li yearRange
             ]
         ]

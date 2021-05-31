@@ -78,3 +78,9 @@ update msg model =
 
         ToggleHints ->
             ( { model | hintsEnabled = not model.hintsEnabled }, Cmd.none )
+
+        ToggleSundayFirst ->
+            ( { model | sundayFirst = not model.sundayFirst }, Cmd.none )
+
+        ToggleWeekdayHints ->
+            ( { model | weekdayHintsEnabled = not model.weekdayHintsEnabled }, Cmd.none )

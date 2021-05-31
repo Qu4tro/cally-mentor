@@ -65,3 +65,28 @@ toString weekday =
 
         Saturday ->
             "Saturday"
+
+
+hint : Weekday -> String
+hint weekday =
+    case weekday of
+        Sunday ->
+            "0 or 7"
+
+        Monday ->
+            "1"
+
+        Tuesday ->
+            "2"
+
+        Wednesday ->
+            "3"
+
+        Thursday ->
+            "4"
+
+        Friday ->
+            "5"
+
+        Saturday ->
+            "6"

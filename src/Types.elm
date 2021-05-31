@@ -5,9 +5,11 @@ type alias Model =
     { date : Date
     , weekday : Weekday
     , gameMode : GameMode
-    , yearRange : ( Year, Year )
-    , hintsEnabled : Bool
     , darkModeEnabled : Bool
+    , sundayFirst : Bool
+    , weekdayHintsEnabled : Bool
+    , hintsEnabled : Bool
+    , yearRange : ( Year, Year )
     , page : Page
     , answerState : AnswerState
     }
@@ -23,6 +25,8 @@ type Msg
     | PickOption Weekday
     | ChangeGameModeTo GameMode
     | ToggleDarkMode
+    | ToggleSundayFirst
+    | ToggleWeekdayHints
     | ToggleHints
 
 

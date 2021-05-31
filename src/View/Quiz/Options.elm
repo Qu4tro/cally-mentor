@@ -6,7 +6,7 @@ import Html exposing (Html, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Types exposing (AnswerState(..), Model, Msg(..), Weekday(..))
-import View.Common exposing (plain, withClass)
+import View.Common exposing (plain, plainAsText, withClass)
 
 
 span =
@@ -27,14 +27,17 @@ button =
         |> withClass "xl:w-1/5 xl:mx-10"
 
 
+aside =
+    Html.aside
+        |> withClass "text-base opacity-30"
+        |> plainAsText
+
+
 view : Model -> Html Msg
 view m =
     let
         option weekday =
             let
-                weekdayName =
-                    Weekday.toString weekday
-
                 isPickedOption =
                     Options.selected m == Just weekday
 
@@ -54,17 +57,37 @@ view m =
 
                         _ ->
                             class "bg-gray-700 hover:bg-yellow-500 "
+
+                weekdayName =
+                    Weekday.toString weekday
             in
             button
                 [ PickOption weekday |> onClick, bgClass ]
-                [ text weekdayName ]
+                (if m.weekdayHintsEnabled then
+                    [ text weekdayName, aside (Weekday.hint weekday) ]
+
+                 else
+                    [ text weekdayName ]
+                )
     in
-    span
-        [ option Sunday
-        , option Monday
-        , option Tuesday
-        , option Wednesday
-        , option Thursday
-        , option Friday
-        , option Saturday
-        ]
+    if m.sundayFirst then
+        span
+            [ option Sunday
+            , option Monday
+            , option Tuesday
+            , option Wednesday
+            , option Thursday
+            , option Friday
+            , option Saturday
+            ]
+
+    else
+        span
+            [ option Monday
+            , option Tuesday
+            , option Wednesday
+            , option Thursday
+            , option Friday
+            , option Saturday
+            , option Sunday
+            ]
