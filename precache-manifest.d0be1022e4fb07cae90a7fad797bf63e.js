@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/weekday-guru/guide.md"
   },
   {
-    "revision": "a52931614ca77d5ebaabe2042a931860",
+    "revision": "0412a66d5c78e73e1810c126de229c49",
     "url": "/weekday-guru/index.html"
   },
   {
@@ -36,12 +36,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/weekday-guru/manifest.json"
   },
   {
-    "revision": "80440d60116cb97c2534",
-    "url": "/weekday-guru/static/css/main.80d51331.chunk.css"
+    "revision": "e1edde17d0b2f03935a6",
+    "url": "/weekday-guru/static/css/main.3243edca.chunk.css"
   },
   {
-    "revision": "80440d60116cb97c2534",
-    "url": "/weekday-guru/static/js/main.80440d60.chunk.js"
+    "revision": "e1edde17d0b2f03935a6",
+    "url": "/weekday-guru/static/js/main.e1edde17.chunk.js"
   },
   {
     "revision": "78eec5ed6c05c6782da9",
