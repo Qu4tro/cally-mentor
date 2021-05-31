@@ -11,6 +11,16 @@ when inside the directory containing this file.
 
 -}
 
+import NoBooleanCase
+import NoDebug.Log
+import NoDebug.TodoOrToString
+import NoDuplicatePorts
+import NoLongImportLines
+import NoModuleOnExposedNames
+import NoRecursiveUpdate
+import NoRedundantConcat
+import NoRedundantCons
+import NoUnsafePorts
 import NoUnused.CustomTypeConstructorArgs
 import NoUnused.CustomTypeConstructors
 import NoUnused.Dependencies
@@ -19,6 +29,7 @@ import NoUnused.Modules
 import NoUnused.Parameters
 import NoUnused.Patterns
 import NoUnused.Variables
+import NoUnusedPorts
 import Review.Rule exposing (Rule)
 
 
@@ -32,4 +43,15 @@ config =
     , NoUnused.Parameters.rule
     , NoUnused.Patterns.rule
     , NoUnused.Variables.rule
+    , NoRedundantConcat.rule
+    , NoBooleanCase.rule
+    , NoModuleOnExposedNames.rule
+    , NoLongImportLines.rule
+    , NoDebug.Log.rule
+    , NoDebug.TodoOrToString.rule
+    , NoDuplicatePorts.rule
+    , NoUnsafePorts.rule NoUnsafePorts.any
+    , NoUnusedPorts.rule
+    , NoRedundantCons.rule
+    , NoRecursiveUpdate.rule
     ]
