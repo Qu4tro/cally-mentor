@@ -107,12 +107,12 @@ view m =
             , p "Reorder the weekdays according to your preference."
             ]
 
-        hintWeekdays =
+        weekdayHints =
             [ span (h3 "Weekday hints enabled" :: yesNo m.settings.weekdayHintsEnabled ToggleWeekdayHints)
             , p "Annotate on each weekday the corresponding code. Recommended for beginners."
             ]
 
-        hints =
+        dateHints =
             [ span (h3 "Date hints enabled" :: yesNo m.settings.dateHintsEnabled ToggleDateHints)
             , p "Click on a date component to get its corresponding code. Recommended for beginners."
             ]
@@ -142,10 +142,10 @@ view m =
     div
         [ h2 "Settings"
         , ol
-            [ li darkMode
+            [ li yearRange
             , li sunday
-            , li hintWeekdays
-            , li hints
-            , li yearRange
+            , li weekdayHints
+            , li dateHints
+            , li darkMode
             ]
         ]
