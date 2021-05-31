@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/weekday-guru/favicon.ico"
   },
   {
-    "revision": "a50f13c087a55ef4487806484a1284d0",
+    "revision": "66da3741568d970b2b67341089993a2b",
     "url": "/weekday-guru/index.html"
   },
   {
@@ -12,23 +12,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/weekday-guru/manifest.json"
   },
   {
-    "revision": "6fd3e5fa48866b2992f9",
+    "revision": "2a349963b6f02b94a190",
     "url": "/weekday-guru/static/css/main.350463bc.chunk.css"
   },
   {
-    "revision": "aedefe9b9a65783fa36a",
-    "url": "/weekday-guru/static/css/vendors~main.679831fc.chunk.css"
-  },
-  {
-    "revision": "6fd3e5fa48866b2992f9",
-    "url": "/weekday-guru/static/js/main.6fd3e5fa.chunk.js"
+    "revision": "2a349963b6f02b94a190",
+    "url": "/weekday-guru/static/js/main.2a349963.chunk.js"
   },
   {
     "revision": "78eec5ed6c05c6782da9",
     "url": "/weekday-guru/static/js/runtime~main.78eec5ed.js"
   },
   {
-    "revision": "aedefe9b9a65783fa36a",
-    "url": "/weekday-guru/static/js/vendors~main.aedefe9b.chunk.js"
+    "revision": "0b49ec49a892799f59f3",
+    "url": "/weekday-guru/static/js/vendors~main.0b49ec49.chunk.js"
   }
 ]);

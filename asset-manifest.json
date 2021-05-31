@@ -1,15 +1,14 @@
 {
   "main.css": "/weekday-guru/static/css/main.350463bc.chunk.css",
-  "main.js": "/weekday-guru/static/js/main.6fd3e5fa.chunk.js",
-  "main.js.map": "/weekday-guru/static/js/main.6fd3e5fa.chunk.js.map",
+  "main.js": "/weekday-guru/static/js/main.2a349963.chunk.js",
+  "main.js.map": "/weekday-guru/static/js/main.2a349963.chunk.js.map",
   "runtime~main.js": "/weekday-guru/static/js/runtime~main.78eec5ed.js",
   "runtime~main.js.map": "/weekday-guru/static/js/runtime~main.78eec5ed.js.map",
-  "vendors~main.css": "/weekday-guru/static/css/vendors~main.679831fc.chunk.css",
-  "vendors~main.js": "/weekday-guru/static/js/vendors~main.aedefe9b.chunk.js",
-  "vendors~main.js.map": "/weekday-guru/static/js/vendors~main.aedefe9b.chunk.js.map",
+  "vendors~main.js": "/weekday-guru/static/js/vendors~main.0b49ec49.chunk.js",
+  "vendors~main.js.map": "/weekday-guru/static/js/vendors~main.0b49ec49.chunk.js.map",
   "./service-worker.js": "/weekday-guru/./service-worker.js",
   "favicon.ico": "/weekday-guru/favicon.ico",
   "index.html": "/weekday-guru/index.html",
   "manifest.json": "/weekday-guru/manifest.json",
-  "precache-manifest.90b35de0132459eec03a88ff44a2e3ec.js": "/weekday-guru/precache-manifest.90b35de0132459eec03a88ff44a2e3ec.js"
+  "precache-manifest.0099f3cf4a6b5b687893ad859b3dcfd9.js": "/weekday-guru/precache-manifest.0099f3cf4a6b5b687893ad859b3dcfd9.js"
 }
